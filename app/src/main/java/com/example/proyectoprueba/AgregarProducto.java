@@ -60,7 +60,7 @@ public class AgregarProducto extends AppCompatActivity {
             }
         });
 
-        // Boton Volver
+        // Boton Volver al anterior ventana
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
