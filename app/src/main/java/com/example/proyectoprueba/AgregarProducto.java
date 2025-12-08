@@ -18,7 +18,7 @@ public class AgregarProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.agregar_producto);
+        setContentView( R.layout.agregar_producto);
 
         // Vincular vistas con IDs
         etNombre = findViewById(R.id.etNombre);

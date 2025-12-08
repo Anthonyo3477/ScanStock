@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="Bienvenido al Supermercado"
+            android:text="Bienvenidos a StockScan"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"

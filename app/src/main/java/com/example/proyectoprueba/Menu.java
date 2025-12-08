@@ -15,14 +15,25 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        ImageButton iconAvisos = findViewById(R.id.iconAvisos);
+        Button btnAvisos = findViewById(R.id.btnAvisos);
+        Button btnProductos = findViewById(R.id.btnProductos);
         Button btnVolver = findViewById(R.id.btnVolver);
 
         // Ir a Avisos
-        iconAvisos.setOnClickListener(new View.OnClickListener() {
+        btnAvisos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, Avisos.class);
+                startActivity(intent);
+                // aquí NO pongo finish() para que se pueda volver atrás
+            }
+        });
+
+        // Ir a Avisos
+        btnProductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, AgregarProducto.class);
                 startActivity(intent);
                 // aquí NO pongo finish() para que se pueda volver atrás
             }
