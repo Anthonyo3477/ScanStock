@@ -12,7 +12,8 @@
         android:text=" Ingrese Sus Credenciales "
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp" />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp" />
 
     <!-- Correo -->
     <EditText
@@ -20,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo"
-        android:layout_marginTop="200dp" />
+        android:layout_marginTop="150dp" />
 
     <!-- Contraseña -->
     <EditText
@@ -36,5 +37,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ingresar" />
+
+    <!-- Boton Ingresar Usuario -->
+    <Button
+        android:id="@+id/btnIngresarUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresar Usuario" />
+
+    <!-- Boton Ingresar Super admin -->
+    <Button
+        android:id="@+id/btnIngresarSuperAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresar Super Admin" />
+
+    <!-- Boton Cerrar Secion -->
+    <Button
+        android:id="@+id/btnCerrarSecion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Secion" />
 
 </LinearLayout>

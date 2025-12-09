@@ -15,6 +15,9 @@
         <activity android:name=".Avisos"></activity>
         <activity android:name=".AvisosAdapter"></activity>
         <activity android:name=".AgregarProducto"></activity>
+        <activity android:name=".Registrar"></activity>
+        <activity android:name=".menuUsuario"></activity>
+        <activity android:name=".menuSuperAdmin"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"

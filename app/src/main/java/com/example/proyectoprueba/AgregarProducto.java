@@ -13,7 +13,7 @@ public class AgregarProducto extends AppCompatActivity {
 
     // Referencias a los campos
     private EditText etNombre, etCategoria, etCodigoBarras, etCantidad, etStockBodega, etStockGondola;
-    private Button btnGuardar, btnVolver;
+    private Button btnGuardar, btnVolver, btnEscanear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class AgregarProducto extends AppCompatActivity {
         etStockGondola = findViewById(R.id.etStockGondola);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnVolver = findViewById(R.id.btnVolver);
+        btnEscanear = findViewById(R.id.btnEscanear);
 
         // Acción botón Guardar
         btnGuardar.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +58,15 @@ public class AgregarProducto extends AppCompatActivity {
                     etStockBodega.setText("");
                     etStockGondola.setText("");
                 }
+            }
+        });
+
+        // Boton para escanear
+        btnEscanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // aca deberia de ingresar al apartado donde se pueda ingresar el producto con el codigo de barras mediante a la camara
+                // este apartado se realizara mas adelante, primero haremos el resto de ventanas y luego ingresararemos este apartado
             }
         });
 
