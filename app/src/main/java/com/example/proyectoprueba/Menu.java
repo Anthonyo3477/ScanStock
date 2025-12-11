@@ -17,6 +17,7 @@ public class Menu extends AppCompatActivity {
 
         Button btnAvisos = findViewById(R.id.btnAvisos);
         Button btnProductos = findViewById(R.id.btnProductos);
+        Button btnListarProductos = findViewById(R.id.btnListarProductos);
         Button btnVolver = findViewById(R.id.btnVolver);
 
         // Ir a Avisos
@@ -29,13 +30,22 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        // Ir a Avisos
+        // Ir a Productos
         btnProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, AgregarProducto.class);
                 startActivity(intent);
                 // aquí NO pongo finish() para que se pueda volver atrás
+            }
+        });
+
+        // Boton para Listar Productos
+        btnListarProductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(Menu.this, ListarProductos.class);
+                //startActivity(intent);
             }
         });
 

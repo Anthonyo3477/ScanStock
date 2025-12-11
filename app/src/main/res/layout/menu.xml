@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="Menú Principal"
+            android:text="Menú Principal de Administrador"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -28,14 +28,6 @@
             android:layout_marginBottom="16dp"
             android:text="Avisos" />
 
-        <!-- Botón Productos -->
-        <Button
-            android:id="@+id/btnProductos"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Productos" />
-
         <!-- Botón Agregar Aviso -->
         <Button
             android:id="@+id/btnAgregarAviso"
@@ -43,6 +35,22 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Agregar Aviso" />
+
+        <!-- Botón Productos -->
+        <Button
+            android:id="@+id/btnProductos"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Nuevos Productos" />
+
+        <!-- Botón Listar Productos -->
+        <Button
+            android:id="@+id/btnListarProductos"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Listar Productos" />
 
         <!-- Botón Volver -->
         <Button
