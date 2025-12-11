@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,7 +13,7 @@
 
         <!-- Título -->
         <TextView
-            android:id="@+id/tvTitulo"
+            android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Categorías"
@@ -168,12 +169,24 @@
                     android:text="Limpieza"
                     android:layout_marginTop="6dp"/>
             </LinearLayout>
+
         </LinearLayout>
+
+
         <!-- Ojo este apartado seran para poner las imagenes de los imagen button,
         esas imagenes deben de estar descargadas y agreagdas en la carpeta de drawable -->
         <!-- android:src="@drawable/ic_limpieza" -->
 
         <!-- Puedes añadir más filas aquí -->
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Volver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 </ScrollView>

@@ -18,6 +18,8 @@
         <activity android:name=".Registrar"></activity>
         <activity android:name=".menuUsuario"></activity>
         <activity android:name=".menuSuperAdmin"></activity>
+        <activity android:name=".categoriaProductos"></activity>
+        <activity android:name=".ListarProductos"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"

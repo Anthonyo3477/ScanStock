@@ -12,25 +12,21 @@ import java.util.List;
 
 public class Avisos extends AppCompatActivity {
 
-   //Declaracion de Variables
     private RecyclerView recyclerViewAvisos;
     private Button buttonVolver;
 
     // Adaptador y Lista
-    // El Adapter es el puente entre tus datos y cómo se muestran en el RecyclerView.
     private AvisosAdapter avisosAdapter;
-    private List<String> listaDeAvisos; // Suponemos que tus avisos son simplemente Strings por ahora.
+    private List<String> listaDeAvisos;
 
-    // Metodo OnCreate()
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // Siempre llama al método de la superclase primero
-        // Layout
         setContentView(R.layout.avisos);
 
-        // Se inicializan las vistas
         recyclerViewAvisos = findViewById(R.id.recyclerViewAvisos);
-        buttonVolver = findViewById(R.id.buttonVolver);
+        buttonVolver = findViewById(R.id.btnVolver);
 
         // Preparacion de la base de datos, esto hace que traigan de una manera los datos desde la DB ojo los avisos solo seran de que falta un producto
         // Tambien pueden haber otros avisos, pero esos avisos serian reuniones, entrada mas temprano, entrada mas tarde, pioridades de algun pasillo en especifico
@@ -47,8 +43,6 @@ public class Avisos extends AppCompatActivity {
         // CONFIGURAR EL RECYCLERVIEW
         recyclerViewAvisos.setLayoutManager(new LinearLayoutManager(this));
 
-        // b. Adapter: Crea una instancia de tu adaptador personalizado (que crearemos en un paso separado)
-        //    y pásale la lista de datos.
         avisosAdapter = new AvisosAdapter(listaDeAvisos, this);
         recyclerViewAvisos.setAdapter(avisosAdapter);
 
