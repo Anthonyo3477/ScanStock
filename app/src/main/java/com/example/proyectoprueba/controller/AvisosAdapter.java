@@ -1,4 +1,4 @@
-package com.example.proyectoprueba;
+package com.example.proyectoprueba.controller;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView; // Para mostrar el texto del aviso en cada ítem
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectoprueba.R;
+
 import java.util.List;
 
 public class AvisosAdapter extends RecyclerView.Adapter<AvisosAdapter.AvisoViewHolder> {

@@ -1,11 +1,12 @@
-package com.example.proyectoprueba;
+package com.example.proyectoprueba.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.proyectoprueba.R;
 
 public class menuSuperAdmin extends AppCompatActivity {
 

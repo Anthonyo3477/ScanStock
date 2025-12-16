@@ -1,4 +1,4 @@
-package com.example.proyectoprueba;
+package com.example.proyectoprueba.controller;
 
 // import de los objetos, estos viene del xml, o tambien puede venir de otro lado como una clase
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectoprueba.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
