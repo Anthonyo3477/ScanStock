@@ -20,6 +20,7 @@ public class Menu extends AppCompatActivity {
         Button btnProductos = findViewById(R.id.btnProductos);
         Button btnListarProductos = findViewById(R.id.btnListarProductos);
         Button btnVolver = findViewById(R.id.btnVolver);
+        Button btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
 
         // Ir a Avisos
         btnAvisos.setOnClickListener(new View.OnClickListener() {
@@ -27,7 +28,15 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, Avisos.class);
                 startActivity(intent);
-                // aquí NO pongo finish() para que se pueda volver atrás
+            }
+        });
+
+        // Agregar Avisos
+        btnAgregarAviso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, agregarAviso.class);
+                startActivity(intent);
             }
         });
 
@@ -37,7 +46,6 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, AgregarProducto.class);
                 startActivity(intent);
-                // aquí NO pongo finish() para que se pueda volver atrás
             }
         });
 
@@ -54,7 +62,7 @@ public class Menu extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // cierra Menu y regresa a Home
+                finish();
             }
         });
     }

@@ -40,7 +40,7 @@ public class Registrar extends AppCompatActivity {
         btnIngresarSuperAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Registrar.this, Menu.class);
+                Intent intent = new Intent(Registrar.this, menuSuperAdmin.class);
                 startActivity(intent);
             }
         });

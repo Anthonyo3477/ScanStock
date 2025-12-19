@@ -20,6 +20,7 @@
         <activity android:name=".controller.menuSuperAdmin"></activity>
         <activity android:name=".controller.categoriaProductos"></activity>
         <activity android:name=".controller.ListarProductos"></activity>
+        <activity android:name=".controller.agregarAviso"></activity>
         <activity
             android:name=".controller.MainActivity"
             android:exported="true"

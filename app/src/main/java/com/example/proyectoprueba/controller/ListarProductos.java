@@ -36,7 +36,6 @@ public class ListarProductos extends AppCompatActivity {
         productoAdapter adapter = new productoAdapter(listaProductos);
         recyclerProductos.setAdapter(adapter);
 
-
         // Boton para volver
         btnVolver.setOnClickListener(v -> finish());
 
