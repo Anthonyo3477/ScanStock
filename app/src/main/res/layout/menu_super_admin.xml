@@ -28,6 +28,14 @@
             android:layout_marginBottom="16dp"
             android:text="Avisos" />
 
+        <!-- Botón Agregar Aviso -->
+        <Button
+            android:id="@+id/btnAgregarAviso"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Agregar Aviso" />
+
         <!-- Botón Productos -->
         <Button
             android:id="@+id/btnGestionUsuarios"
@@ -36,13 +44,14 @@
             android:layout_marginBottom="16dp"
             android:text="Gestion de Usuarios" />
 
-        <!-- Botón Agregar Aviso -->
+        <!-- Botón Productos -->
         <Button
-            android:id="@+id/btnAgregarAviso"
+            android:id="@+id/btnGenerarReporte"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Agregar Aviso" />
+            android:text="Generar Reporte" />
+
 
         <!-- Botón Volver -->
         <Button

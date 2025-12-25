@@ -25,7 +25,7 @@ public class menuUsuario extends AppCompatActivity {
         btnAvisoProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(menuUsuario.this, AgregarProducto.class);
+                Intent intent = new Intent(menuUsuario.this, agregarAviso.class);
                 startActivity(intent);
 
             }
