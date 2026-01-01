@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Personal"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Nombre -->
+    <EditText
+        android:id="@+id/etNombrePersonal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Correo -->
+    <EditText
+        android:id="@+id/etRut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="RUT"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Direccion -->
+    <EditText
+        android:id="@+id/etDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Direccion"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Correo -->
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Rol -->
+    <EditText
+        android:id="@+id/etRol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Rol"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botón Guardar -->
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Producto" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver" />
+
+</LinearLayout>

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.adapter.AvisosAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

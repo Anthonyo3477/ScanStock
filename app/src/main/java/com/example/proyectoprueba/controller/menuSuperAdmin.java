@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.proyectoprueba.R;
 
 public class menuSuperAdmin extends AppCompatActivity {
@@ -18,9 +17,11 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         Button btnAvisos = findViewById(R.id.btnAvisos);
         Button btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
-        Button btnGestionUsuarios = findViewById(R.id.btnGestionUsuarios);
+        Button btngestionUsuarios = findViewById(R.id.btngestionUsuarios);
         Button btnVolver = findViewById(R.id.btnVolver);
         Button btnGenerarReporte = findViewById(R.id.btnGenerarReporte);
+        Button btnAgregarPersonal = findViewById(R.id.btnAgregarPersonal);
+
 
         // Ir a Avisos
         btnAvisos.setOnClickListener(new View.OnClickListener() {
@@ -39,14 +40,21 @@ public class menuSuperAdmin extends AppCompatActivity {
             }
         });
 
-        // Ir a Gestion de Usuarios
-        btnGestionUsuarios.setOnClickListener(new View.OnClickListener() {
+        // Ir a Agregar Personal
+        btnAgregarPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // crear la ventana de Gestions de usuarios, esta ventana listara todos los usuarios,
-                // al momento de precionar un boton para modificar podremos cambiar de rol de los usuarios
-                //Intent intent = new Intent(menuSuperAdmin.this, GestionUsuarios.class);
-                //startActivity(intent);
+                Intent intent = new Intent(menuSuperAdmin.this, agregarPersonal.class);
+                startActivity(intent);
+            }
+        });
+
+        // Ir a Gestion de Usuarios
+        btngestionUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(menuSuperAdmin.this, gestionUsuarios.class);
+                startActivity(intent);
             }
         });
 

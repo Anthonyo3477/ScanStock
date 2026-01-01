@@ -36,9 +36,17 @@
             android:layout_marginBottom="16dp"
             android:text="Agregar Aviso" />
 
+        <!-- Botón Agregar Personal -->
+        <Button
+            android:id="@+id/btnAgregarPersonal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Agregar Personal" />
+
         <!-- Botón Productos -->
         <Button
-            android:id="@+id/btnGestionUsuarios"
+            android:id="@+id/btngestionUsuarios"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"

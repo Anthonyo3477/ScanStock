@@ -37,6 +37,14 @@
             android:text="Stock: 0"
             android:layout_marginTop="4dp"/>
 
+    <!-- Contenedor horizontal para los botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="12dp">
+
         <!-- Boton para modificar el producto -->
         <Button
             android:id="@+id/btnModificarProducto"
@@ -52,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Eliminar Producto" />
+    </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
