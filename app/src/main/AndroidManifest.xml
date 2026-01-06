@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoPrueba">
-        <activity android:name=".controller.Menu"></activity>
+        <activity android:name=".controller.menuAdmin"></activity>
         <activity android:name=".controller.Avisos"></activity>
-        <activity android:name=".adapter.AvisosAdapter"></activity>
         <activity android:name=".controller.AgregarProducto"></activity>
-        <activity android:name=".controller.Registrar"></activity>
+        <activity android:name=".controller.Login"></activity>
         <activity android:name=".controller.menuUsuario"></activity>
         <activity android:name=".controller.menuSuperAdmin"></activity>
         <activity android:name=".controller.categoriaProductos"></activity>
         <activity android:name=".controller.ListarProductos"></activity>
         <activity android:name=".controller.agregarAviso"></activity>
-        <activity android:name=".controller.agregarPersonal"></activity>
+        <activity android:name=".controller.registrarPersonal"></activity>
         <activity android:name=".controller.gestionUsuarios"></activity>
         <activity android:name=".adapter.personalAdapter"></activity>
+        <activity android:name=".adapter.AvisosAdapter"></activity>
         <activity
             android:name=".controller.MainActivity"
             android:exported="true"

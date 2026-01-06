@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
 
-public class Menu extends AppCompatActivity {
+public class menuAdmin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class Menu extends AppCompatActivity {
         btnAvisos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Avisos.class);
+                Intent intent = new Intent(menuAdmin.this, Avisos.class);
                 startActivity(intent);
             }
         });
@@ -35,7 +35,7 @@ public class Menu extends AppCompatActivity {
         btnAgregarAviso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, agregarAviso.class);
+                Intent intent = new Intent(menuAdmin.this, agregarAviso.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
         btnProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, AgregarProducto.class);
+                Intent intent = new Intent(menuAdmin.this, AgregarProducto.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +53,7 @@ public class Menu extends AppCompatActivity {
         btnListarProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, categoriaProductos.class);
+                Intent intent = new Intent(menuAdmin.this, categoriaProductos.class);
                 startActivity(intent);
             }
         });

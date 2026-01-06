@@ -3,22 +3,21 @@ package com.example.proyectoprueba.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectoprueba.R;
-import com.example.proyectoprueba.model.usuarios;
+import com.example.proyectoprueba.model.Usuario;
 
 import java.util.List;
 
 public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHolder> {
 
-    private List<usuarios> listaPersonal;
+    private List<Usuario> listaPersonal;
 
 
-    public personalAdapter(List<usuarios> listaPersonal) {
+    public personalAdapter(List<Usuario> listaPersonal) {
         this.listaPersonal = listaPersonal;
     }
 
@@ -32,7 +31,7 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        usuarios personal = listaPersonal.get(position);
+        Usuario personal = listaPersonal.get(position);
 
         holder.txtNombrePersonal.setText(personal.getNombre());
         holder.txtRut.setText("Rut: " + personal.getRut());

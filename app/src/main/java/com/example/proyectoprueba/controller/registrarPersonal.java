@@ -8,7 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyectoprueba.R;
 
-public class agregarPersonal extends AppCompatActivity {
+public class registrarPersonal extends AppCompatActivity {
 
     private EditText etNombrePersonal, etRut, etDireccion, etCorreo, etRol;
     private Button btnGuardar, btnVolver;
@@ -16,7 +16,7 @@ public class agregarPersonal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.agregar_personal);
+        setContentView(R.layout.registrar_personal);
 
         etNombrePersonal = findViewById(R.id.etNombrePersonal);
         etRut = findViewById(R.id.etRut);

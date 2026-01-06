@@ -17,7 +17,8 @@
 
     <!-- Correo -->
     <EditText
-        android:id="@+id/Correo"
+        android:id="@+id/etCorreo"
+        android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo"
@@ -25,7 +26,8 @@
 
     <!-- Contraseña -->
     <EditText
-        android:id="@+id/Contraseña"
+        android:id="@+id/etContraseña"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
@@ -38,19 +40,13 @@
         android:layout_height="wrap_content"
         android:text="Ingresar" />
 
-    <!-- Boton Ingresar Usuario -->
-    <Button
-        android:id="@+id/btnIngresarUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ingresar Usuario" />
 
-    <!-- Boton Ingresar Super admin -->
+    <!-- Boton Cerrar Secion -->
     <Button
-        android:id="@+id/btnIngresarSuperAdmin"
+        android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ingresar Super Admin" />
+        android:text="Registrar" />
 
     <!-- Boton Cerrar Secion -->
     <Button
