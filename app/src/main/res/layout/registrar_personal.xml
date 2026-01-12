@@ -47,6 +47,14 @@
         android:hint="Correo"
         android:layout_marginBottom="16dp" />
 
+    <!-- Correo -->
+    <EditText
+        android:id="@+id/etContraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo"
+        android:layout_marginBottom="16dp" />
+
     <!-- Rol -->
     <EditText
         android:id="@+id/etRol"
