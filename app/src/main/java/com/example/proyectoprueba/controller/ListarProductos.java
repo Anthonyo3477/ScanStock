@@ -2,6 +2,7 @@ package com.example.proyectoprueba.controller;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,34 +11,64 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectoprueba.R;
 import com.example.proyectoprueba.adapter.productoAdapter;
 import com.example.proyectoprueba.model.Producto;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListarProductos extends AppCompatActivity {
+
+    private productoAdapter adapter;
+    private List<Producto> listaProducto;
+    private FirebaseFirestore db;
+    private RecyclerView recyclerProductos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_productos);
 
+        // Botones
         Button btnVolver = findViewById(R.id.btnVolver);
-        RecyclerView recyclerProductos = findViewById(R.id.recyclerProductos);
+        recyclerProductos = findViewById(R.id.recyclerProductos);
 
-        // Configurar el RecyclerView aquí
-
+        // Configurar RecyclerView
         recyclerProductos.setLayoutManager(new LinearLayoutManager(this));
 
-        List<Producto> listaProductos = new ArrayList<>();
-        listaProductos.add(new Producto("Detergente", "", "Liempeiza", "", 100, 50,10 , 20));
-        listaProductos.add(new Producto("Leche", "", "Lacteos", "", 100, 0, 5, 20));
-        listaProductos.add(new Producto("Coca Cola", "", "Bebidas", "", 300, 100, 2, 20));
-
-
-        productoAdapter adapter = new productoAdapter(listaProductos);
+        // Inicializar lista
+        listaProducto = new ArrayList<>();
+        adapter = new productoAdapter(listaProducto);
         recyclerProductos.setAdapter(adapter);
 
-        // Boton para volver
-        btnVolver.setOnClickListener(v -> finish());
+        // Firebase
+        db = FirebaseFirestore.getInstance();
 
+        cargarProductos();
+
+        btnVolver.setOnClickListener(v -> finish());
+    }
+
+    private void cargarProductos() {
+
+        db.collection("producto")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+
+                    listaProducto.clear();
+
+                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                        Producto producto = doc.toObject(Producto.class);
+                        if (producto != null) {
+                            listaProducto.add(producto);
+                            Toast.makeText(this, "Producto: " + producto.getNombre(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Error al cargar los productos", Toast.LENGTH_SHORT).show()
+                );
     }
 }
