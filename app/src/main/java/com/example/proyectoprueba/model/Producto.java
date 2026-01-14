@@ -5,37 +5,27 @@ import java.util.Objects;
 
 public class Producto {
 
-    private int idProducto;
     private String nombre;
+    private String marca;
     private String categoria;
-    private String ubicacionGondola;
-    private String fechaActualizacion;
+    private String fechaCaducidad;
+    private int cantidad;
+    private int codigoBarras;
     private int stockBodega;
     private int stockGondola;
-    private int stockMinimo;
 
-    public Producto(int idProducto, String nombre, String categoria, String ubicacionGondola, String fechaActualizacion,
-                    int stockBodega, int stockGondola, int stockMinimo) {
+    public Producto() {
+    }
 
-        this.idProducto = idProducto;
+    public Producto(String nombre, String marca, String categoria, String fechaCaducidad, int cantidad, int codigoBarras, int stockBodega, int stockGondola) {
         this.nombre = nombre;
+        this.marca = marca;
         this.categoria = categoria;
-        this.ubicacionGondola = ubicacionGondola;
-        this.fechaActualizacion = fechaActualizacion;
+        this.fechaCaducidad = fechaCaducidad;
+        this.cantidad = cantidad;
+        this.codigoBarras = codigoBarras;
         this.stockBodega = stockBodega;
         this.stockGondola = stockGondola;
-        this.stockMinimo = stockMinimo;
-
-    }
-
-    public Producto(){
-    }
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -46,6 +36,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public String getCategoria() {
         return categoria;
     }
@@ -54,20 +52,28 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public String getUbicacionGondola() {
-        return ubicacionGondola;
+    public String getFechaCaducidad() {
+        return fechaCaducidad;
     }
 
-    public void setUbicacionGondola(String ubicacionGondola) {
-        this.ubicacionGondola = ubicacionGondola;
+    public void setFechaCaducidad(String fechaCaducidad) {
+        this.fechaCaducidad = fechaCaducidad;
     }
 
-    public String getFechaActualizacion() {
-        return fechaActualizacion;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setFechaActualizacion(String fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(int codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
     public int getStockBodega() {
@@ -85,38 +91,17 @@ public class Producto {
     public void setStockGondola(int stockGondola) {
         this.stockGondola = stockGondola;
     }
-
-    public int getStockMinimo() {
-        return stockMinimo;
-    }
-
-    public void setStockMinimo(int stockMinimo) {
-        this.stockMinimo = stockMinimo;
-    }
-
     @Override
     public String toString() {
         return "Producto{" +
-                "idProducto=" + idProducto +
-                ", nombre='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
+                ", marca='" + marca + '\'' +
                 ", categoria='" + categoria + '\'' +
-                ", ubicacionGondola='" + ubicacionGondola + '\'' +
-                ", fechaActualizacion='" + fechaActualizacion + '\'' +
+                ", fechaCaducidad='" + fechaCaducidad + '\'' +
+                ", cantidad=" + cantidad +
+                ", codigoBarras=" + codigoBarras +
                 ", stockBodega=" + stockBodega +
                 ", stockGondola=" + stockGondola +
-                ", stockMinimo=" + stockMinimo +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Producto producto = (Producto) o;
-        return idProducto == producto.idProducto && stockBodega == producto.stockBodega && stockGondola == producto.stockGondola && stockMinimo == producto.stockMinimo && Objects.equals(nombre, producto.nombre) && Objects.equals(categoria, producto.categoria) && Objects.equals(ubicacionGondola, producto.ubicacionGondola) && Objects.equals(fechaActualizacion, producto.fechaActualizacion);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idProducto, nombre, categoria, ubicacionGondola, fechaActualizacion, stockBodega, stockGondola, stockMinimo);
     }
 }

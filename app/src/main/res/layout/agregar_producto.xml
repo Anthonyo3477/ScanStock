@@ -22,6 +22,14 @@
         android:hint="Nombre"
         android:layout_marginBottom="16dp" />
 
+    <!-- Marca -->
+    <EditText
+        android:id="@+id/etMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Marca"
+        android:layout_marginBottom="16dp" />
+
     <!-- Categoría -->
     <EditText
         android:id="@+id/etCategoria"
@@ -30,12 +38,21 @@
         android:hint="Categoría"
         android:layout_marginBottom="16dp" />
 
+    <!-- Fecha De Caducidad -->
+    <EditText
+        android:id="@+id/etfechaCaducidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Fecha De Caducidad"
+        android:layout_marginBottom="24dp" />
+
     <!-- Código de Barras -->
     <EditText
         android:id="@+id/etCodigoBarras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Código de Barras"
+        android:inputType="number"
         android:layout_marginBottom="16dp" />
 
     <!-- Cantidad -->
@@ -52,18 +69,18 @@
         android:id="@+id/etStockBodega"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Stock en Bodega"
+        android:hint="Stock Bodega"
         android:inputType="number"
         android:layout_marginBottom="16dp" />
 
-    <!-- Stock Góndola -->
+    <!-- Stock Gondola -->
     <EditText
         android:id="@+id/etStockGondola"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Stock en Góndola"
+        android:hint="Stock Gondola"
         android:inputType="number"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="16dp" />
 
     <!-- Botón Guardar -->
     <Button

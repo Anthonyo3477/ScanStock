@@ -56,8 +56,7 @@ public class registrarPersonal extends AppCompatActivity {
         String contraseña = etContraseña.getText().toString().trim();
         String rol = etRol.getText().toString().trim().toLowerCase();
 
-        if (nombre.isEmpty() || rut.isEmpty() || direccion.isEmpty()
-                || correo.isEmpty() || contraseña.isEmpty() || rol.isEmpty()) {
+        if (nombre.isEmpty() || rut.isEmpty() || direccion.isEmpty() || correo.isEmpty() || contraseña.isEmpty() || rol.isEmpty()) {
 
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
             return;

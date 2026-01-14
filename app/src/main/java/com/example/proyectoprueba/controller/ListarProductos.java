@@ -28,9 +28,9 @@ public class ListarProductos extends AppCompatActivity {
         recyclerProductos.setLayoutManager(new LinearLayoutManager(this));
 
         List<Producto> listaProductos = new ArrayList<>();
-        listaProductos.add(new Producto(1, "Detergente", "Liempeiza", "", "", 50,10 , 20));
-        listaProductos.add(new Producto(2, "Leche", "Lacteos", "", "", 0, 5, 20));
-        listaProductos.add(new Producto(3, "Coca Cola", "Bebidas", "", "", 100, 2, 20));
+        listaProductos.add(new Producto("Detergente", "", "Liempeiza", "", 100, 50,10 , 20));
+        listaProductos.add(new Producto("Leche", "", "Lacteos", "", 100, 0, 5, 20));
+        listaProductos.add(new Producto("Coca Cola", "", "Bebidas", "", 300, 100, 2, 20));
 
 
         productoAdapter adapter = new productoAdapter(listaProductos);
