@@ -68,29 +68,51 @@ public class AgregarProducto extends AppCompatActivity {
 
     private void guardarProducto() {
 
+        // campos STRING
         String nombre = etNombre.getText().toString().trim();
         String marca = etMarca.getText().toString().trim();
         String categoria = etCategoria.getText().toString().trim();
         String fechaCaducidad = etFechaCaducidad.getText().toString().trim();
-        String codigoBarras = etCodigoBarras.getText().toString().trim();
-        String cantidad = etCantidad.getText().toString().trim();
-        String stockBodega = etStockBodega.getText().toString().trim();
-        String stockGondola = etStockGondola.getText().toString().trim();
 
-        if ( nombre.isEmpty() || marca.isEmpty() || categoria.isEmpty() || fechaCaducidad.isEmpty()
-                || codigoBarras.isEmpty() || cantidad.isEmpty() || stockBodega.isEmpty() || stockGondola.isEmpty() ) {
+        // campos INT
+        String codigoBarrasStr = etCodigoBarras.getText().toString().trim();
+        String cantidadStr = etCantidad.getText().toString().trim();
+        String stockBodegaStr = etStockBodega.getText().toString().trim();
+        String stockGondolaStr = etStockGondola.getText().toString().trim();
 
+        // validacion de que estos campos sean String
+        if ( nombre.isEmpty() || marca.isEmpty() || categoria.isEmpty() || fechaCaducidad.isEmpty()) {
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
 
         }
 
+        // validacion de que estos campos sean INT
+        if ( !codigoBarrasStr.matches("\\d+")
+                ||!cantidadStr.matches("\\d+") ||
+                !stockBodegaStr.matches("\\d+") ||
+                !stockGondolaStr.matches("\\d+")) {
+
+            Toast.makeText(this, "Cantidad y stock deben ser números", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Convertir los campos a su tipo correspondiente
+        int codigoBarras = Integer.parseInt(codigoBarrasStr);
+        int cantidad = Integer.parseInt(cantidadStr);
+        int stockBodega = Integer.parseInt(stockBodegaStr);
+        int stockGondola = Integer.parseInt(stockGondolaStr);
+
         // Crear un mapa con los datos del producto
         Map<String, Object> producto = new HashMap<>();
+
+        // campos STRING
         producto.put("nombre", nombre);
         producto.put("marca", marca);
         producto.put("categoria", categoria);
         producto.put("fechaCaducidad", fechaCaducidad);
+
+        // campos INT
         producto.put("codigoBarras", codigoBarras);
         producto.put("cantidad", cantidad);
         producto.put("stockBodega", stockBodega);

@@ -43,9 +43,7 @@ public class ListarProductos extends AppCompatActivity {
 
         // Firebase
         db = FirebaseFirestore.getInstance();
-
         cargarProductos();
-
         btnVolver.setOnClickListener(v -> finish());
     }
 
@@ -61,7 +59,6 @@ public class ListarProductos extends AppCompatActivity {
                         Producto producto = doc.toObject(Producto.class);
                         if (producto != null) {
                             listaProducto.add(producto);
-                            Toast.makeText(this, "Producto: " + producto.getNombre(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
