@@ -43,13 +43,17 @@ public class ListarProductos extends AppCompatActivity {
 
         // Firebase
         db = FirebaseFirestore.getInstance();
-        cargarProductos();
+
+        String categoriaSelecionada = getIntent().getStringExtra("categoria");
+
+        cargarProductosPorCategoria(categoriaSelecionada);
         btnVolver.setOnClickListener(v -> finish());
     }
 
-    private void cargarProductos() {
+    private void cargarProductosPorCategoria( String categoria) {
 
         db.collection("producto")
+                .whereEqualTo("categoria", categoria)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
 

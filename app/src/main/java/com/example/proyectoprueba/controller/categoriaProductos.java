@@ -8,12 +8,17 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.model.Producto;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class categoriaProductos extends AppCompatActivity {
 
     private ImageButton btnPanaderia, btnAbarrotes, btnLacteos, btnRefrigerados, btnBebidas, btnLimpieza, btnBebe, btnMascota, btnOtros;
     private Button btnVolver;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
