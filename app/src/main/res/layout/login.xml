@@ -15,6 +15,15 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="5dp" />
 
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progress_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:indeterminate="true" />
+
     <!-- Correo -->
     <EditText
         android:id="@+id/etCorreo"

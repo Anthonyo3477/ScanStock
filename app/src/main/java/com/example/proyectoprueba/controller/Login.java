@@ -2,9 +2,12 @@ package com.example.proyectoprueba.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
@@ -15,6 +18,7 @@ public class Login extends AppCompatActivity {
 
     private EditText etCorreo, etContraseña;
     private Button btnIngresar, btnCerrarSecion;
+    private ProgressBar progressLogin;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -29,6 +33,7 @@ public class Login extends AppCompatActivity {
 
         btnIngresar = findViewById(R.id.btnIngresar);
         btnCerrarSecion = findViewById(R.id.btnCerrarSecion);
+        progressLogin = findViewById(R.id.progress_login);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -47,38 +52,60 @@ public class Login extends AppCompatActivity {
             return;
         }
 
+        progressLogin.setVisibility(View.VISIBLE);
+        btnIngresar.setEnabled(false);
+        btnCerrarSecion.setEnabled(false);
+
         auth.signInWithEmailAndPassword(correo, contraseña)
                 .addOnSuccessListener(authResult -> {
 
-                    // Buscar usuario por correo en Firestore
-                    db.collection("usuarios").whereEqualTo("correo", correo).limit(1).get() .addOnSuccessListener(querySnapshot -> {
+                    db.collection("usuarios")
+                            .whereEqualTo("correo", correo)
+                            .limit(1)
+                            .get()
+                            .addOnSuccessListener(querySnapshot -> {
+
                                 if (!querySnapshot.isEmpty()) {
-                                    String rol = querySnapshot.getDocuments().get(0).getString("rol");
+
+                                    String rol = querySnapshot.getDocuments()
+                                            .get(0)
+                                            .getString("rol");
+
                                     if (rol == null) {
-                                        Toast.makeText(this, "Rol no definido", Toast.LENGTH_LONG).show();
+                                        mostrarError("Rol no definido");
                                         return;
                                     }
+
                                     redirigirPorRol(rol);
 
                                 } else {
-                                    Toast.makeText(this, "Usuario no existe en Firestore", Toast.LENGTH_LONG).show();
+                                    mostrarError("Usuario no existe en Firestore");
                                 }
 
                             })
                             .addOnFailureListener(e ->
-                                    Toast.makeText(this, "Error Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                                    mostrarError("Error Firestore: " + e.getMessage())
                             );
 
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error login: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                        mostrarError("Error login: " + e.getMessage())
                 );
+    }
+
+    private void mostrarError(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+
+        progressLogin.setVisibility(View.GONE);
+        btnIngresar.setEnabled(true);
+        btnCerrarSecion.setEnabled(true);
     }
 
     private void redirigirPorRol(String rol) {
 
         rol = rol.toLowerCase().trim();
         Intent intent;
+
         switch (rol) {
             case "superadmin":
                 intent = new Intent(this, menuSuperAdmin.class);

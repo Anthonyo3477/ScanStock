@@ -37,54 +37,24 @@ public class categoriaProductos extends AppCompatActivity {
         btnMascota = findViewById(R.id.btnMascota);
         btnOtros = findViewById(R.id.btnOtros);
 
-        Button btnVolver = findViewById(R.id.btnVolver);
+        btnVolver = findViewById(R.id.btnVolver);
 
-        btnPanaderia.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-
-        btnAbarrotes.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnLacteos.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnRefrigerados.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnBebidas.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnLimpieza.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnBebe.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnMascota.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
-
-        btnOtros.setOnClickListener(v -> {
-            Intent intent = new Intent(categoriaProductos.this, ListarProductos.class);
-            startActivity(intent);
-        });
+        btnPanaderia.setOnClickListener(v -> abrirCategoria("Panaderia"));
+        btnAbarrotes.setOnClickListener(v -> abrirCategoria("Abarrotes"));
+        btnLacteos.setOnClickListener(v -> abrirCategoria("Lacteos"));
+        btnRefrigerados.setOnClickListener(v -> abrirCategoria("Refrigerados"));
+        btnBebidas.setOnClickListener(v -> abrirCategoria("Bebidas"));
+        btnLimpieza.setOnClickListener(v -> abrirCategoria("Limpieza"));
+        btnBebe.setOnClickListener(v -> abrirCategoria("Bebe"));
+        btnMascota.setOnClickListener(v -> abrirCategoria("Mascota"));
+        btnOtros.setOnClickListener(v -> abrirCategoria("Otros"));
 
         btnVolver.setOnClickListener(v -> finish());
+    }
+
+    private void abrirCategoria(String categoria){
+        Intent intent = new Intent( categoriaProductos.this , ListarProductos.class);
+        intent.putExtra("categoria", categoria);
+        startActivity(intent );
     }
 }
