@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     private ProgressBar progressHome;
     private Button btnIrMenu;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             progressHome.setVisibility(View.VISIBLE);
             btnIrMenu.setEnabled(false);
 
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            Intent intent = new Intent(Home.this, Login.class);
             startActivity(intent);
         });
     }

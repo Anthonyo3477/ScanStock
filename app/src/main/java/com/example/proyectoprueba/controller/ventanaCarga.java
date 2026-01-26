@@ -22,7 +22,7 @@ public class ventanaCarga extends AppCompatActivity {
             @Override
             public void run() {
 
-                startActivity(new Intent(ventanaCarga.this, MainActivity.class));
+                startActivity(new Intent(ventanaCarga.this, Home.class));
                 finish();
 
                 finish();

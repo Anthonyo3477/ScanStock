@@ -20,6 +20,14 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <ProgressBar
+            android:id="@+id/progress_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:indeterminate="true"/>
+
         <!-- Botón Productos -->
         <Button
             android:id="@+id/btnAvisoProducto"

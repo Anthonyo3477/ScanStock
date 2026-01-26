@@ -33,7 +33,7 @@
         <activity android:name=".controller.agregarAviso" />
         <activity android:name=".controller.registrarPersonal" />
         <activity android:name=".controller.gestionUsuarios" />
-        <activity android:name=".controller.MainActivity" />
+        <activity android:name=".controller.Home" />
 
     </application>
 </manifest>
