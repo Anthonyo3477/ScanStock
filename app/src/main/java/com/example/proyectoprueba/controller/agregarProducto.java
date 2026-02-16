@@ -2,8 +2,10 @@ package com.example.proyectoprueba.controller;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +16,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AgregarProducto extends AppCompatActivity {
+public class agregarProducto extends AppCompatActivity {
 
-    // Referencias a los campos
-    private EditText etNombre, etMarca, etCategoria, etFechaCaducidad, etCodigoBarras, etCantidad, etStockBodega, etStockGondola;
+    private EditText etNombre, etMarca, etFechaCaducidad, etCodigoBarras, etCantidad, etStockBodega, etStockGondola;
+    private Spinner spCategoria;
     private Button btnGuardar, btnVolver, btnEscanear;
     private FirebaseFirestore db;
 
@@ -26,104 +28,89 @@ public class AgregarProducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.agregar_producto);
 
-        // inputs
         etNombre = findViewById(R.id.etNombre);
         etMarca = findViewById(R.id.etMarca);
-        etCategoria = findViewById(R.id.etCategoria);
+        spCategoria = findViewById(R.id.spCategoria);
         etFechaCaducidad = findViewById(R.id.etfechaCaducidad);
         etCodigoBarras = findViewById(R.id.etCodigoBarras);
         etCantidad = findViewById(R.id.etCantidad);
-        etFechaCaducidad = findViewById(R.id.etfechaCaducidad);
         etStockBodega = findViewById(R.id.etStockBodega);
         etStockGondola = findViewById(R.id.etStockGondola);
 
-        // botones
         btnGuardar = findViewById(R.id.btnGuardar);
         btnVolver = findViewById(R.id.btnVolver);
         btnEscanear = findViewById(R.id.btnEscanear);
 
-        // Firebase
         db = FirebaseFirestore.getInstance();
 
-        // Boton para Guardar
+        // configuracion de spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.categorias_array,
+                android.R.layout.simple_spinner_item
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCategoria.setAdapter(adapter);
+
         btnGuardar.setOnClickListener(v -> guardarProducto());
-
-        // Boton para escanear
-        btnEscanear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // aca deberia de ingresar al apartado donde se pueda ingresar el producto con el codigo de barras mediante a la camara
-                // este apartado se realizara mas adelante, primero haremos el resto de ventanas y luego ingresararemos este apartado
-            }
-        });
-
-        // Boton Volver al anterior ventana
-        btnVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btnVolver.setOnClickListener(v -> finish());
     }
 
     private void guardarProducto() {
 
-        // campos STRING
         String nombre = etNombre.getText().toString().trim();
         String marca = etMarca.getText().toString().trim();
-        String categoria = etCategoria.getText().toString().trim();
+        String categoria = spCategoria.getSelectedItem().toString();
         String fechaCaducidad = etFechaCaducidad.getText().toString().trim();
 
-        // campos INT
         String codigoBarrasStr = etCodigoBarras.getText().toString().trim();
         String cantidadStr = etCantidad.getText().toString().trim();
         String stockBodegaStr = etStockBodega.getText().toString().trim();
         String stockGondolaStr = etStockGondola.getText().toString().trim();
 
-        // validacion de que estos campos sean String
-        if ( nombre.isEmpty() || marca.isEmpty() || categoria.isEmpty() || fechaCaducidad.isEmpty()) {
-            Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
-            return;
+        Toast.makeText(this, "Categoria seleccionada: " + categoria, Toast.LENGTH_LONG).show();
 
+        if (nombre.isEmpty() || marca.isEmpty() ||
+                categoria.equals("Seleccione categoría") ||
+                fechaCaducidad.isEmpty()) {
+
+            Toast.makeText(this, "Complete todos los campos correctamente", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        // validacion de que estos campos sean INT
-        if ( !codigoBarrasStr.matches("\\d+")
-                ||!cantidadStr.matches("\\d+") ||
+        if (!codigoBarrasStr.matches("\\d+") ||
+                !cantidadStr.matches("\\d+") ||
                 !stockBodegaStr.matches("\\d+") ||
                 !stockGondolaStr.matches("\\d+")) {
 
-            Toast.makeText(this, "Cantidad y stock deben ser números", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Los campos numéricos deben contener solo números", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Convertir los campos a su tipo correspondiente
         int codigoBarras = Integer.parseInt(codigoBarrasStr);
         int cantidad = Integer.parseInt(cantidadStr);
         int stockBodega = Integer.parseInt(stockBodegaStr);
         int stockGondola = Integer.parseInt(stockGondolaStr);
 
-        // Crear un mapa con los datos del producto
         Map<String, Object> producto = new HashMap<>();
-
-        // campos STRING
         producto.put("nombre", nombre);
         producto.put("marca", marca);
         producto.put("categoria", categoria);
         producto.put("fechaCaducidad", fechaCaducidad);
-
-        // campos INT
         producto.put("codigoBarras", codigoBarras);
         producto.put("cantidad", cantidad);
         producto.put("stockBodega", stockBodega);
         producto.put("stockGondola", stockGondola);
 
-        // Guardar el producto en Firestore
-        db.collection("producto").add(producto).addOnSuccessListener(documentReference -> {
-            Toast.makeText(this, "Producto agregado correctamente", Toast.LENGTH_SHORT).show();
-            finish();
-        }).addOnFailureListener(e -> {
-            Toast.makeText(this, "Error al agregar el producto", Toast.LENGTH_SHORT).show();
-        });
+        db.collection("producto")
+                .add(producto)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(this, "Producto agregado correctamente", Toast.LENGTH_SHORT).show();
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 }

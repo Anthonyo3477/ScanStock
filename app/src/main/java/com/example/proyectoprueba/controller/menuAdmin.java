@@ -41,7 +41,7 @@ public class menuAdmin extends AppCompatActivity {
 
         // Ir a Productos
         btnProductos.setOnClickListener(v -> {
-            navegar(new Intent(this, registrarPersonal.class));
+            navegar(new Intent(this, agregarProducto.class));
         });
 
         // Boton para Listar Productos
@@ -77,6 +77,5 @@ public class menuAdmin extends AppCompatActivity {
         btnListarProductos.setEnabled(true);
         btnAgregarAviso.setEnabled(true);
         btnVolver.setEnabled(true);
-
     }
 }

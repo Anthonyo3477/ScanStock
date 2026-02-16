@@ -44,7 +44,7 @@ public class categoriaProductos extends AppCompatActivity {
         btnLacteos.setOnClickListener(v -> abrirCategoria("Lacteos"));
         btnRefrigerados.setOnClickListener(v -> abrirCategoria("Refrigerados"));
         btnBebidas.setOnClickListener(v -> abrirCategoria("Bebidas"));
-        btnLimpieza.setOnClickListener(v -> abrirCategoria("Limpieza"));
+        btnLimpieza.setOnClickListener(v -> abrirCategoria("Limpieza Hogar"));
         btnBebe.setOnClickListener(v -> abrirCategoria("Bebe"));
         btnMascota.setOnClickListener(v -> abrirCategoria("Mascota"));
         btnOtros.setOnClickListener(v -> abrirCategoria("Otros"));

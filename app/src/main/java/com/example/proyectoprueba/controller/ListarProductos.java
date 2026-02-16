@@ -46,7 +46,9 @@ public class ListarProductos extends AppCompatActivity {
 
         String categoriaSelecionada = getIntent().getStringExtra("categoria");
 
+
         cargarProductosPorCategoria(categoriaSelecionada);
+        Toast.makeText(this, "Categoria: " + categoriaSelecionada, Toast.LENGTH_SHORT).show();
         btnVolver.setOnClickListener(v -> finish());
     }
 

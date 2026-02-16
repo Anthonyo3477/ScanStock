@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Agregar Producto"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -31,12 +32,12 @@
         android:layout_marginBottom="16dp" />
 
     <!-- Categoría -->
-    <EditText
-        android:id="@+id/etCategoria"
+    <Spinner
+        android:id="@+id/spCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Categoría"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:entries="@array/categorias_array" />
 
     <!-- Fecha De Caducidad -->
     <EditText
@@ -60,7 +61,7 @@
         android:id="@+id/etCantidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cantidad"
+        android:hint="Nueva Cantidad de Productos en Bodega"
         android:inputType="number"
         android:layout_marginBottom="16dp" />
 
