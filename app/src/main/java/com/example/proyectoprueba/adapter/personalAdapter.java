@@ -4,9 +4,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.proyectoprueba.R;
 import com.example.proyectoprueba.model.Usuario;
 
@@ -15,22 +17,28 @@ import java.util.List;
 public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHolder> {
 
     private List<Usuario> listaPersonal;
+    private OnItemClickListener listener;
 
+    public interface OnItemClickListener {
+        void onItemClick(Usuario usuario);
+    }
 
-    public personalAdapter(List<Usuario> listaPersonal) {
+    public personalAdapter(List<Usuario> listaPersonal, OnItemClickListener listener) {
         this.listaPersonal = listaPersonal;
+        this.listener = listener;
     }
 
     @NonNull
-
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_personal, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_personal, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         Usuario personal = listaPersonal.get(position);
 
         holder.txtNombrePersonal.setText(personal.getNombre());
@@ -39,6 +47,13 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
         holder.txtCorreo.setText("Correo: " + personal.getCorreo());
         holder.txtRol.setText("Rol: " + personal.getRol());
 
+        holder.itemView.setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), "CLICK OK", Toast.LENGTH_SHORT).show();
+
+            if (listener != null) {
+                listener.onItemClick(personal);
+            }
+        });
     }
 
     @Override
@@ -47,10 +62,12 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView txtNombrePersonal, txtRut, txtDireccion, txtCorreo, txtRol;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             txtNombrePersonal = itemView.findViewById(R.id.txtNombreUsuario);
             txtRut = itemView.findViewById(R.id.txtRut);
             txtDireccion = itemView.findViewById(R.id.txtDireccion);
@@ -59,4 +76,3 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
         }
     }
 }
-

@@ -34,6 +34,7 @@
         <activity android:name=".controller.registrarPersonal" />
         <activity android:name=".controller.gestionUsuarios" />
         <activity android:name=".controller.Home" />
+        <activity android:name=".controller.modificarUsuario" />
 
     </application>
 </manifest>

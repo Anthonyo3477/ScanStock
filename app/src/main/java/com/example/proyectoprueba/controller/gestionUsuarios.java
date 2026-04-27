@@ -1,5 +1,6 @@
 package com.example.proyectoprueba.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,21 +28,34 @@ public class gestionUsuarios extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gestion_usuarios);
+        setContentView(R.layout.listar_usuarios);
 
         // Botones
         Button btnVolver = findViewById(R.id.btnVolver);
-        RecyclerView recyclerPersonal = findViewById(R.id.recyclerPersonal);
 
-        // LayoutManager
+        // RecyclerView
+        recyclerPersonal = findViewById(R.id.recyclerPersonal);
         recyclerPersonal.setLayoutManager(new LinearLayoutManager(this));
 
-        // Lista de Usuario
+        // Lista
         listaPersonal = new ArrayList<>();
-        adapter = new personalAdapter(listaPersonal);
-        recyclerPersonal.setAdapter(adapter);
 
-        // Firebase
+        // Adapter con listener
+        adapter = new personalAdapter(listaPersonal, usuario -> {
+
+            Intent intent = new Intent(gestionUsuarios.this, modificarUsuario.class);
+
+            intent.putExtra("idUsuario", usuario.getId());
+            intent.putExtra("nombre", usuario.getNombre());
+            intent.putExtra("rut", usuario.getRut());
+            intent.putExtra("direccion", usuario.getDireccion());
+            intent.putExtra("correo", usuario.getCorreo());
+            intent.putExtra("rol", usuario.getRol());
+
+            startActivity(intent);
+        });
+
+        recyclerPersonal.setAdapter(adapter);
         db = FirebaseFirestore.getInstance();
         cargarPersonal();
         btnVolver.setOnClickListener(v -> finish());
@@ -49,19 +63,25 @@ public class gestionUsuarios extends AppCompatActivity {
 
     private void cargarPersonal() {
 
-        db.collection("usuarios").get().addOnSuccessListener(queryDocumentSnapshots -> {
+        db.collection("usuarios")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
 
-            listaPersonal.clear();
+                    listaPersonal.clear();
 
-            for(DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                Usuario usuario = doc.toObject(Usuario.class);
-                if (usuario != null) {
-                    listaPersonal.add(usuario);
-                }
-            }
-            adapter.notifyDataSetChanged();
-            }).addOnFailureListener(e -> {
-                Toast.makeText(this, "Error al cargar los usuarios", Toast.LENGTH_SHORT).show();
+                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                        Usuario usuario = doc.toObject(Usuario.class);
+
+                        if (usuario != null) {
+                            usuario.setId(doc.getId());
+                            listaPersonal.add(usuario);
+                        }
+                    }
+
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar los usuarios", Toast.LENGTH_SHORT).show();
                 });
-        }
     }
+}

@@ -60,6 +60,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="end"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             android:layout_marginTop="12dp">
 
             <Button
@@ -67,13 +70,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Modificar"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"
+                android:focusable="false" />
 
             <Button
                 android:id="@+id/btnEliminarPersonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eliminar" />
+                android:text="Eliminar"
+                android:focusable="false"/>
 
         </LinearLayout>
 
