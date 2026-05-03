@@ -71,14 +71,16 @@
                 android:layout_height="wrap_content"
                 android:text="Modificar"
                 android:layout_marginEnd="8dp"
-                android:focusable="false" />
+                android:focusable="true"
+                android:clickable="true" />
 
             <Button
                 android:id="@+id/btnEliminarPersonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Eliminar"
-                android:focusable="false"/>
+                android:focusable="true"
+                android:clickable="true" />
 
         </LinearLayout>
 

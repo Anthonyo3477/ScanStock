@@ -3,6 +3,7 @@ package com.example.proyectoprueba.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
 
     private List<Usuario> listaPersonal;
     private OnItemClickListener listener;
+    private Button btnModificarPersonal, btnEliminarPersonal, btnVolver;
 
     public interface OnItemClickListener {
         void onItemClick(Usuario usuario);
@@ -41,19 +43,22 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
 
         Usuario personal = listaPersonal.get(position);
 
+        Button btnModificarPersonal = holder.itemView.findViewById(R.id.btnModificarPersonal);
+        Button btnEliminarPersonal = holder.itemView.findViewById(R.id.btnEliminarPersonal);
+        Button btnVolver = holder.itemView.findViewById(R.id.btnVolver);
+
         holder.txtNombrePersonal.setText(personal.getNombre());
         holder.txtRut.setText("Rut: " + personal.getRut());
         holder.txtDireccion.setText("Dirección: " + personal.getDireccion());
         holder.txtCorreo.setText("Correo: " + personal.getCorreo());
         holder.txtRol.setText("Rol: " + personal.getRol());
 
-        holder.itemView.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "CLICK OK", Toast.LENGTH_SHORT).show();
-
+        btnModificarPersonal.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(personal);
             }
         });
+
     }
 
     @Override
