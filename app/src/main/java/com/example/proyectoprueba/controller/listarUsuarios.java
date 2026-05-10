@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class gestionUsuarios extends AppCompatActivity {
+public class listarUsuarios extends AppCompatActivity {
 
     private personalAdapter adapter;
     private List<Usuario> listaPersonal;
@@ -43,7 +43,7 @@ public class gestionUsuarios extends AppCompatActivity {
         // Adapter con listener
         adapter = new personalAdapter(listaPersonal, usuario -> {
 
-            Intent intent = new Intent(gestionUsuarios.this, modificarUsuario.class);
+            Intent intent = new Intent(listarUsuarios.this, modificarUsuario.class);
 
             intent.putExtra("idUsuario", usuario.getId());
             intent.putExtra("nombre", usuario.getNombre());

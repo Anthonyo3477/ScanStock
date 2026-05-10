@@ -32,9 +32,10 @@
         <activity android:name=".controller.agregarProducto" />
         <activity android:name=".controller.agregarAviso" />
         <activity android:name=".controller.registrarPersonal" />
-        <activity android:name=".controller.gestionUsuarios" />
+        <activity android:name=".controller.listarUsuarios" />
         <activity android:name=".controller.Home" />
         <activity android:name=".controller.modificarUsuario" />
+        <activity android:name=".controller.modificarProducto" />
 
     </application>
 </manifest>

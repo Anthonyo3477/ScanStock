@@ -1,0 +1,93 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar Producto"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:id="@+id/etNombreProducto"
+        android:hint="Nombre Producto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/etMarca"
+        android:hint="Marca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/etCategoria"
+        android:hint="Categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/etFechaCaducidad"
+        android:hint="Fecha de Caducidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/etCodigoBarras"
+        android:hint="Codigos De Barras"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/etCantidad"
+        android:hint="Cantidad de Producto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/etStockBodega"
+        android:hint="Stock en Bodega"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/etStockGondola"
+        android:hint="Stock en Gondola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/btnActualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Actualizar" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Volver" />
+
+</LinearLayout>

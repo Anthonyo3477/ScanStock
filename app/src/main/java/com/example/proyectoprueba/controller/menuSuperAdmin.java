@@ -45,7 +45,7 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         // Ir a Gestion de Usuarios
         btngestionUsuarios.setOnClickListener( v -> {
-            navegar(new Intent(this, gestionUsuarios.class));
+            navegar(new Intent(this, listarUsuarios.class));
         });
 
         // Ir a Generar Reporte

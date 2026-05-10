@@ -1,5 +1,6 @@
 package com.example.proyectoprueba.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -38,21 +39,40 @@ public class ListarProductos extends AppCompatActivity {
 
         // Inicializar lista
         listaProducto = new ArrayList<>();
-        adapter = new productoAdapter(listaProducto);
+
+        // Creacion del Adapter
+        adapter = new productoAdapter(listaProducto, producto -> {
+
+            Intent intent = new Intent(ListarProductos.this, modificarProducto.class);
+
+            intent.putExtra("idProducto", producto.getId());
+            intent.putExtra("nombre", producto.getNombre());
+            intent.putExtra("marca", producto.getMarca());
+            intent.putExtra("categoria", producto.getCategoria());
+            intent.putExtra("fechaCaducidad", producto.getFechaCaducidad());
+            intent.putExtra("codigoBarras", producto.getCodigoBarras());
+            intent.putExtra("cantidad", producto.getCantidad());
+            intent.putExtra("stockBodega", producto.getStockBodega());
+            intent.putExtra("stockGondola", producto.getStockGondola());
+
+            startActivity(intent);
+
+        });
+
+        // Recycle adapter
         recyclerProductos.setAdapter(adapter);
 
         // Firebase
         db = FirebaseFirestore.getInstance();
 
         String categoriaSelecionada = getIntent().getStringExtra("categoria");
-
-
         cargarProductosPorCategoria(categoriaSelecionada);
         Toast.makeText(this, "Categoria: " + categoriaSelecionada, Toast.LENGTH_SHORT).show();
         btnVolver.setOnClickListener(v -> finish());
+
     }
 
-    private void cargarProductosPorCategoria( String categoria) {
+    private void cargarProductosPorCategoria(String categoria) {
 
         db.collection("producto")
                 .whereEqualTo("categoria", categoria)
@@ -64,6 +84,7 @@ public class ListarProductos extends AppCompatActivity {
                     for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
                         Producto producto = doc.toObject(Producto.class);
                         if (producto != null) {
+                            producto.setId(doc.getId());
                             listaProducto.add(producto);
                         }
                     }

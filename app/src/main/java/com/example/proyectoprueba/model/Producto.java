@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Producto {
 
+    private String id;
     private String nombre;
     private String marca;
     private String categoria;
@@ -17,7 +18,8 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, String marca, String categoria, String fechaCaducidad, int cantidad, int codigoBarras, int stockBodega, int stockGondola) {
+    public Producto(String id ,String nombre, String marca, String categoria, String fechaCaducidad, int cantidad, int codigoBarras, int stockBodega, int stockGondola) {
+        this.id = id;
         this.nombre = nombre;
         this.marca = marca;
         this.categoria = categoria;
@@ -26,6 +28,14 @@ public class Producto {
         this.codigoBarras = codigoBarras;
         this.stockBodega = stockBodega;
         this.stockGondola = stockGondola;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -91,10 +101,12 @@ public class Producto {
     public void setStockGondola(int stockGondola) {
         this.stockGondola = stockGondola;
     }
+
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", marca='" + marca + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", fechaCaducidad='" + fechaCaducidad + '\'' +
