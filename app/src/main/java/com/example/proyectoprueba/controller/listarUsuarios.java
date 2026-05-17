@@ -53,7 +53,19 @@ public class listarUsuarios extends AppCompatActivity {
             intent.putExtra("rol", usuario.getRol());
 
             startActivity(intent);
-        });
+        },
+                // Eliminar
+                usuario -> {
+                    db.collection("usuarios").document(usuario.getId()).delete().addOnSuccessListener(unused -> {
+                        Toast.makeText(this, "Personal eliminado correctamente", Toast.LENGTH_SHORT).show();
+
+                        cargarPersonal();
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error al eliminar el personal", Toast.LENGTH_SHORT).show();
+                    });
+                }
+        );
+
 
         recyclerPersonal.setAdapter(adapter);
         db = FirebaseFirestore.getInstance();

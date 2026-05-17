@@ -28,21 +28,21 @@
             android:visibility="gone"
             android:indeterminate="true"/>
 
-        <!-- Botón Avisos -->
+        <!-- Botón Notificaciones -->
         <Button
             android:id="@+id/btnAvisos"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Avisos" />
+            android:text="Notificaciones" />
 
-        <!-- Botón Agregar Aviso -->
+        <!-- Botón Agregar Notificaciones -->
         <Button
             android:id="@+id/btnAgregarAviso"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Agregar Aviso" />
+            android:text="Agregar Notificaciones" />
 
         <!-- Botón Agregar Personal -->
         <Button
@@ -54,11 +54,11 @@
 
         <!-- Botón Productos -->
         <Button
-            android:id="@+id/btngestionUsuarios"
+            android:id="@+id/btnlistarUsuarios"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Gestion de Usuarios" />
+            android:text="Listar Personal" />
 
         <!-- Botón Productos -->
         <Button

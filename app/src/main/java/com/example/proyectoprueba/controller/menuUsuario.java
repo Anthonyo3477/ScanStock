@@ -33,7 +33,7 @@ public class menuUsuario extends AppCompatActivity {
 
 
         btnAviso.setOnClickListener( v ->{
-            navegar(new Intent(this, Avisos.class));
+            navegar(new Intent(this, Notificaciones.class));
         });
 
         // Botón volver al Home

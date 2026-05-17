@@ -29,12 +29,12 @@ public class menuAdmin extends AppCompatActivity {
 
         progressMenu = findViewById(R.id.progress_menu);
 
-        // Ir a Avisos
+        // Ir a Notificaciones
         btnAvisos.setOnClickListener( v ->{
-            navegar(new Intent(this, Avisos.class));
+            navegar(new Intent(this, Notificaciones.class));
         });
 
-        // Agregar Avisos
+        // Agregar Notificaciones
         btnAgregarAviso.setOnClickListener(v ->{
             navegar(new Intent(this, agregarAviso.class));
         });

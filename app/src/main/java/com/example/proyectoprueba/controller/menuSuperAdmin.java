@@ -11,7 +11,7 @@ import com.example.proyectoprueba.R;
 
 public class menuSuperAdmin extends AppCompatActivity {
 
-    private Button btnAvisos, btnAgregarAviso, btngestionUsuarios, btnVolver, btnGenerarReporte, btnAgregarPersonal;
+    private Button btnAvisos, btnAgregarAviso, btnlistarUsuarios, btnVolver, btnGenerarReporte, btnAgregarPersonal;
     private ProgressBar progressMenu;
 
 
@@ -22,15 +22,15 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         btnAvisos = findViewById(R.id.btnAvisos);
         btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
-        btngestionUsuarios = findViewById(R.id.btngestionUsuarios);
+        btnlistarUsuarios = findViewById(R.id.btnlistarUsuarios);
         btnGenerarReporte = findViewById(R.id.btnGenerarReporte);
         btnAgregarPersonal = findViewById(R.id.btnAgregarPersonal);
         btnVolver = findViewById(R.id.btnVolver);
         progressMenu = findViewById(R.id.progress_menu);
 
-        // Ir a Avisos
+        // Ir a Notificaciones
         btnAvisos.setOnClickListener(v ->{
-            navegar(new Intent(this, Avisos.class));
+            navegar(new Intent(this, Notificaciones.class));
         });
 
         // Ir a Agregar Aviso
@@ -43,8 +43,8 @@ public class menuSuperAdmin extends AppCompatActivity {
             navegar(new Intent(this, registrarPersonal.class));
         });
 
-        // Ir a Gestion de Usuarios
-        btngestionUsuarios.setOnClickListener( v -> {
+        // Ir a Listar los Usuarios
+        btnlistarUsuarios.setOnClickListener( v -> {
             navegar(new Intent(this, listarUsuarios.class));
         });
 
@@ -69,7 +69,7 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         btnAvisos.setEnabled(false);
         btnAgregarAviso.setEnabled(false);
-        btngestionUsuarios.setEnabled(false);
+        btnlistarUsuarios.setEnabled(false);
         btnGenerarReporte.setEnabled(false);
         btnAgregarPersonal.setEnabled(false);
         btnVolver.setEnabled(false);
@@ -84,7 +84,7 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         btnAvisos.setEnabled(true);
         btnAgregarAviso.setEnabled(true);
-        btngestionUsuarios.setEnabled(true);
+        btnlistarUsuarios.setEnabled(true);
         btnGenerarReporte.setEnabled(true);
         btnAgregarPersonal.setEnabled(true);
         btnVolver.setEnabled(true);

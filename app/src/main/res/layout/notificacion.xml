@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.Avisos">
+    tools:context=".controller.Notificaciones">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAvisos"
+        android:id="@+id/recyclerViewNotificacion"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnVolver"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_aviso" /> <!--Este apartado deberia de mostrar la lista de los avisos  -->
+        tools:listitem="@layout/item_notificacion" /> <!--Este apartado deberia de mostrar la lista de los avisos  -->
 
     <Button
         android:id="@+id/btnVolver"

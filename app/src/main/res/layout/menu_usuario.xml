@@ -36,7 +36,7 @@
             android:layout_marginBottom="16dp"
             android:text="Nuevo aviso de Productos" />
 
-        <!-- Botón Avisos -->
+        <!-- Botón Notificaciones -->
         <Button
             android:id="@+id/btnAviso"
             android:layout_width="200dp"

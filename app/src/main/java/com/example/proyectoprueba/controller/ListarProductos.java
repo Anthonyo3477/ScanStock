@@ -57,7 +57,19 @@ public class ListarProductos extends AppCompatActivity {
 
             startActivity(intent);
 
-        });
+        },
+                // Eliminar
+                producto -> {
+
+                    db.collection("producto").document(producto.getId()).delete().addOnSuccessListener(unused -> {
+                        Toast.makeText(this, "Producto eliminado correctamente", Toast.LENGTH_SHORT).show();
+                        cargarProductosPorCategoria(getIntent().getStringExtra("categoria")
+                        );
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error al eliminar el producto", Toast.LENGTH_SHORT).show();
+                    });
+                }
+        );
 
         // Recycle adapter
         recyclerProductos.setAdapter(adapter);

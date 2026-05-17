@@ -18,23 +18,30 @@ import java.util.List;
 public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHolder> {
 
     private List<Usuario> listaPersonal;
-    private OnItemClickListener listener;
+    private OnItemClickListener listenerModificar;
+    private OnDeleteClickListener listenerEliminar;
     private Button btnModificarPersonal, btnEliminarPersonal, btnVolver;
 
+    // Apartado de Modificar
     public interface OnItemClickListener {
         void onItemClick(Usuario usuario);
     }
 
-    public personalAdapter(List<Usuario> listaPersonal, OnItemClickListener listener) {
+    // Apartado de Eliminar
+    public interface OnDeleteClickListener {
+        void onDeleteClick(Usuario usuario);
+    }
+
+    public personalAdapter(List<Usuario> listaPersonal, OnItemClickListener listenerModificar, OnDeleteClickListener listenerEliminar) {
         this.listaPersonal = listaPersonal;
-        this.listener = listener;
+        this.listenerModificar = listenerModificar;
+        this.listenerEliminar = listenerEliminar;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_personal, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_personal, parent, false);
         return new ViewHolder(view);
     }
 
@@ -53,12 +60,19 @@ public class personalAdapter extends RecyclerView.Adapter<personalAdapter.ViewHo
         holder.txtCorreo.setText("Correo: " + personal.getCorreo());
         holder.txtRol.setText("Rol: " + personal.getRol());
 
+        // Boton Modificar Personal
         btnModificarPersonal.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(personal);
+            if (listenerModificar != null) {
+                listenerModificar.onItemClick(personal);
             }
         });
 
+        // Boton Eliminar Personal
+        btnEliminarPersonal.setOnClickListener(v -> {
+            if (listenerEliminar != null) {
+                listenerEliminar.onDeleteClick(personal);
+            }
+        });
     }
 
     @Override
