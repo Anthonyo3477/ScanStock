@@ -28,7 +28,7 @@ public class menuUsuario extends AppCompatActivity {
 
         // Ir a Productos
         btnAvisoProducto.setOnClickListener( v ->{
-            navegar(new Intent(this, agregarAviso.class));
+            navegar(new Intent(this, agregarAlertas.class));
         });
 
 

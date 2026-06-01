@@ -35,7 +35,7 @@ public class menuSuperAdmin extends AppCompatActivity {
 
         // Ir a Agregar Aviso
         btnAgregarAviso.setOnClickListener( v ->{
-            navegar(new Intent(this, agregarAviso.class));
+            navegar(new Intent(this, agregarAlertas.class));
         });
 
         // Ir a Agregar Personal

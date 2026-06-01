@@ -36,7 +36,7 @@ public class menuAdmin extends AppCompatActivity {
 
         // Agregar Notificaciones
         btnAgregarAviso.setOnClickListener(v ->{
-            navegar(new Intent(this, agregarAviso.class));
+            navegar(new Intent(this, agregarAlertas.class));
         });
 
         // Ir a Productos

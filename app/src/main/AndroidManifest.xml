@@ -30,7 +30,7 @@
         <activity android:name=".controller.menuSuperAdmin" />
         <activity android:name=".controller.Notificaciones" />
         <activity android:name=".controller.agregarProducto" />
-        <activity android:name=".controller.agregarAviso" />
+        <activity android:name=".controller.agregarAlertas" />
         <activity android:name=".controller.registrarPersonal" />
         <activity android:name=".controller.listarUsuarios" />
         <activity android:name=".controller.Home" />
