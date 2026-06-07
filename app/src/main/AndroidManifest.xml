@@ -36,6 +36,7 @@
         <activity android:name=".controller.Home" />
         <activity android:name=".controller.modificarUsuario" />
         <activity android:name=".controller.modificarProducto" />
+        <activity android:name=".controller.reponerProducto" />
 
     </application>
 </manifest>
