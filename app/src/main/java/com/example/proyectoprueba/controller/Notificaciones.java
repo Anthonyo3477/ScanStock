@@ -189,31 +189,30 @@ public class Notificaciones extends AppCompatActivity {
     // Metodo para las Alertas Manuales
     private void cargarAlertasManuales() {
         db.collection("alertas").whereEqualTo("estado", "pendiente").get() .addOnSuccessListener(queryDocumentSnapshots -> {
-                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                        String nombre = doc.getString("nombre");
-                        Long cantidad = doc.getLong("cantidadFaltante");
-                        if (cantidad == null) {
-                            cantidad = 0L;
-                        }
-                        String mensaje =
-                                "ALERTA MANUAL - "
-                                        + nombre
-                                        + " (Faltan "
-                                        + cantidad
-                                        + " unidades)";
+            for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                String nombre = doc.getString("nombre");
+                Long cantidad = doc.getLong("cantidadFaltante");
+                if (cantidad == null) {
+                    cantidad = 0L;
+                }
+                String mensaje =
+                        "ALERTA MANUAL - "
+                                + nombre
+                                + " (Faltan "
+                                + cantidad
+                                + " unidades)";
+                listaNotificaciones.add(new Notificacion(doc.getString(
+                        "idProducto"),
+                                mensaje,
+                                "Manual",
+                                "Manual",
+                                "pendiente"
+                        )
+                );
+            }
 
-                        listaNotificaciones.add(new Notificacion(doc.getString(
-                                        "idProducto"),
-                                        mensaje,
-                                        "Manual",
-                                        "Manual",
-                                        "pendiente"
-                                )
-                        );
-                    }
-
-                    adapter.notifyDataSetChanged();
-                });
+            adapter.notifyDataSetChanged();
+        });
     }
 
     // Metodo para guardar alertas en FireStore

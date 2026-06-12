@@ -10,7 +10,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.model.Producto;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class reponerProducto extends AppCompatActivity {
 
@@ -50,14 +55,17 @@ public class reponerProducto extends AppCompatActivity {
     }
 
     private void validarDatos() {
+
         String codigo = etCodigoBarras.getText().toString().trim();
         String cantidadTexto = etCantidadRepuesta.getText().toString().trim();
 
-        if (codigo.isEmpty()) {etCodigoBarras.setError("Ingrese un código");
+        if (codigo.isEmpty()) {
+            etCodigoBarras.setError("Ingrese un código");
             return;
         }
 
-        if (cantidadTexto.isEmpty()) {etCantidadRepuesta.setError("Ingrese una cantidad");
+        if (cantidadTexto.isEmpty()) {
+            etCantidadRepuesta.setError("Ingrese una cantidad");
             return;
         }
 
@@ -66,6 +74,52 @@ public class reponerProducto extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(this, "Datos validados correctamente", Toast.LENGTH_SHORT).show();
+        int cantidad = Integer.parseInt(cantidadTexto);
+        String destino = rbBodega.isChecked()
+                ? "Bodega"
+                : "Gondola";
+
+        reponerProducto(codigo, cantidad, destino);
+    }
+
+    private void reponerProducto(String codigo, int cantidad, String destino) {
+        db.collection("producto").whereEqualTo("codigoBarras", Integer.parseInt(codigo)).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            if (queryDocumentSnapshots.isEmpty()) {
+                Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            DocumentSnapshot doc = queryDocumentSnapshots.getDocuments().get(0);
+            Producto producto = doc.toObject(Producto.class);
+
+            if (producto == null) {
+                Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            producto.setId(doc.getId());
+            Map<String, Object> actualizacion = new HashMap<>();
+
+            if (destino.equals("Bodega")) {actualizacion.put("stockBodega", producto.getStockBodega() + cantidad);
+
+            } else {
+                actualizacion.put("stockGondola", producto.getStockGondola() + cantidad);
+            }
+
+            doc.getReference().update(actualizacion).addOnSuccessListener(aVoid -> {
+                resolverAlerta(producto.getId());
+                Toast.makeText(this, "Producto reponido correctamente", Toast.LENGTH_SHORT).show();
+
+                finish();
+            }).addOnFailureListener(e -> {Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+            });
+        });
+    }
+
+    private void resolverAlerta(String idProducto) {
+        db.collection("alertas").whereEqualTo("idProducto", idProducto).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                doc.getReference().update("estado", "resuelta");
+            }
+        });
     }
 }
