@@ -2,25 +2,39 @@ package com.example.proyectoprueba.model;
 
 public class alertasManual {
 
+    private String idProducto;
     private String nombre;
     private String categoria;
-    private String codigoBarras;
-    private int cantidad;
+    private int codigoBarras;
+    private int cantidadFaltante;
     private int stockBodega;
     private int stockGondola;
     private long fecha;
+    private String estado;
+    private String tipo;
 
     public alertasManual() {
     }
 
-    public alertasManual(String nombre, String categoria, String codigoBarras, int cantidad, int stockBodega, int stockGondola, long fecha) {
+    public alertasManual(String idProducto, String nombre, String categoria, int codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, long fecha, String estado, String tipo) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
         this.codigoBarras = codigoBarras;
-        this.cantidad = cantidad;
+        this.cantidadFaltante = cantidadFaltante;
         this.stockBodega = stockBodega;
         this.stockGondola = stockGondola;
         this.fecha = fecha;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+
+    public String getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(String idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -39,20 +53,20 @@ public class alertasManual {
         this.categoria = categoria;
     }
 
-    public String getCodigoBarras() {
+    public int getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
+    public void setCodigoBarras(int codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCantidadFaltante() {
+        return cantidadFaltante;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidadFaltante(int cantidadFaltante) {
+        this.cantidadFaltante = cantidadFaltante;
     }
 
     public int getStockBodega() {
@@ -79,16 +93,35 @@ public class alertasManual {
         this.fecha = fecha;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
         return "alertasManual{" +
-                "nombre='" + nombre + '\'' +
+                "idProducto='" + idProducto + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", categoria='" + categoria + '\'' +
-                ", codigoBarras='" + codigoBarras + '\'' +
-                ", cantidad=" + cantidad +
+                ", codigoBarras=" + codigoBarras +
+                ", cantidadFaltante=" + cantidadFaltante +
                 ", stockBodega=" + stockBodega +
                 ", stockGondola=" + stockGondola +
                 ", fecha=" + fecha +
+                ", estado='" + estado + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

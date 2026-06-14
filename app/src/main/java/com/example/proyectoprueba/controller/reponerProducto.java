@@ -105,7 +105,7 @@ public class reponerProducto extends AppCompatActivity {
             }
 
             doc.getReference().update(actualizacion).addOnSuccessListener(aVoid -> {
-                resolverAlerta(producto.getId());
+                resolverAlerta(producto.getCodigoBarras());
                 Toast.makeText(this, "Producto reponido correctamente", Toast.LENGTH_SHORT).show();
 
                 finish();
@@ -115,8 +115,10 @@ public class reponerProducto extends AppCompatActivity {
         });
     }
 
-    private void resolverAlerta(String idProducto) {
-        db.collection("alertas").whereEqualTo("idProducto", idProducto).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(queryDocumentSnapshots -> {
+    private void resolverAlerta(int codigoBarras) {
+        db.collection("alertas").whereEqualTo("codigoBarras", codigoBarras).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            Toast.makeText(this, "Alertas encontradas: " + queryDocumentSnapshots.size(), Toast.LENGTH_LONG).show();
+
             for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
                 doc.getReference().update("estado", "resuelta");
             }
