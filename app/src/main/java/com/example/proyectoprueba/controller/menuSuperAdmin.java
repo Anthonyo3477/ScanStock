@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.cardview.widget.CardView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,8 @@ import com.example.proyectoprueba.R;
 
 public class menuSuperAdmin extends AppCompatActivity {
 
-    private Button btnAlertas, btnHistorial, btnAgregarAviso, btnlistarUsuarios, btnVolver, btnGenerarReporte, btnAgregarPersonal;
+    private CardView cardAlertas, cardHistorial, cardAvisos, cardPersonal, cardUsuarios, cardReportes;
+    private Button btnVolver;
     private ProgressBar progressMenu;
 
 
@@ -20,81 +22,75 @@ public class menuSuperAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_super_admin);
 
-        btnAlertas = findViewById(R.id.btnAlertas);
-        btnHistorial = findViewById(R.id.btnHistorial);
-        btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
-        btnlistarUsuarios = findViewById(R.id.btnlistarUsuarios);
-        btnGenerarReporte = findViewById(R.id.btnGenerarReporte);
-        btnAgregarPersonal = findViewById(R.id.btnAgregarPersonal);
+        cardAlertas = findViewById(R.id.cardAlertas);
+        cardHistorial = findViewById(R.id.cardHistorial);
+        cardAvisos = findViewById(R.id.cardAvisos);
+        cardPersonal = findViewById(R.id.cardPersonal);
+        cardUsuarios = findViewById(R.id.cardUsuarios);
+        cardReportes = findViewById(R.id.cardReportes);
+
         btnVolver = findViewById(R.id.btnVolver);
         progressMenu = findViewById(R.id.progress_menu);
 
-        // Ir a Alertas
-        btnAlertas.setOnClickListener(v ->{
-            navegar(new Intent(this, Notificaciones.class));
-        });
+        // Alertas
+        cardAlertas.setOnClickListener(v -> navegar(new Intent(this, Notificaciones.class))
+        );
 
-        // Ir a Historial de Alertas
-        btnHistorial.setOnClickListener(v ->{
-            navegar(new Intent(this, HistorialAlertas.class));
-        });
+        // Historial
+        cardHistorial.setOnClickListener(v -> navegar(new Intent(this, HistorialAlertas.class))
+        );
 
+        // Agregar Aviso
+        cardAvisos.setOnClickListener(v -> navegar(new Intent(this, agregarAlertas.class))
+        );
 
-        // Ir a Agregar Aviso
-        btnAgregarAviso.setOnClickListener( v ->{
-            navegar(new Intent(this, agregarAlertas.class));
-        });
+        // Agregar Personal
+        cardPersonal.setOnClickListener(v -> navegar(new Intent(this, registrarPersonal.class))
+        );
 
-        // Ir a Agregar Personal
-        btnAgregarPersonal.setOnClickListener( v -> {
-            navegar(new Intent(this, registrarPersonal.class));
-        });
+        // Listar Usuarios
+        cardUsuarios.setOnClickListener(v -> navegar(new Intent(this, listarUsuarios.class))
+        );
 
-        // Ir a Listar los Usuarios
-        btnlistarUsuarios.setOnClickListener( v -> {
-            navegar(new Intent(this, listarUsuarios.class));
-        });
+        // Reportes
+        cardReportes.setOnClickListener(v -> {
 
-        // Ir a Generar Reporte
-        btnGenerarReporte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // crear la ventana de Generar Reporte, esta ventana listara todos los avisos
-                //Intent intent = new Intent(menuSuperAdmin.this, GenerarReporte.class);
-                //startActivity(intent);
-            }
-        });
+            // Cuando tengas creada la Activity:
+            // navegar(new Intent(this, GenerarReporte.class));
 
-        // Boton para volver
-        btnVolver.setOnClickListener( v ->{
-            finish();
         });
+        btnVolver.setOnClickListener(v -> finish());
     }
 
-    private void navegar(Intent intent){
+    private void navegar(Intent intent) {
+
         progressMenu.setVisibility(View.VISIBLE);
 
-        btnAlertas.setEnabled(false);
-        btnAgregarAviso.setEnabled(false);
-        btnlistarUsuarios.setEnabled(false);
-        btnGenerarReporte.setEnabled(false);
-        btnAgregarPersonal.setEnabled(false);
+        cardAlertas.setEnabled(false);
+        cardHistorial.setEnabled(false);
+        cardAvisos.setEnabled(false);
+        cardPersonal.setEnabled(false);
+        cardUsuarios.setEnabled(false);
+        cardReportes.setEnabled(false);
+
         btnVolver.setEnabled(false);
 
         startActivity(intent);
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
+
         progressMenu.setVisibility(View.GONE);
 
-        btnAlertas.setEnabled(true);
-        btnAgregarAviso.setEnabled(true);
-        btnlistarUsuarios.setEnabled(true);
-        btnGenerarReporte.setEnabled(true);
-        btnAgregarPersonal.setEnabled(true);
+        cardAlertas.setEnabled(true);
+        cardHistorial.setEnabled(true);
+        cardAvisos.setEnabled(true);
+        cardPersonal.setEnabled(true);
+        cardUsuarios.setEnabled(true);
+        cardReportes.setEnabled(true);
+
         btnVolver.setEnabled(true);
     }
-
 }

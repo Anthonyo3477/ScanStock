@@ -32,6 +32,8 @@ public class modificarUsuario extends AppCompatActivity {
         etRol = findViewById(R.id.etRol);
 
         btnActualizar = findViewById(R.id.btnActualizar);
+        btnVolver = findViewById(R.id.btnVolver);
+
         db = FirebaseFirestore.getInstance();
 
         idUsuario = getIntent().getStringExtra("idUsuario");
@@ -43,7 +45,7 @@ public class modificarUsuario extends AppCompatActivity {
         etRol.setText(getIntent().getStringExtra("rol"));
 
         btnActualizar.setOnClickListener(v -> actualizarUsuario());
-        //btnVolver.setOnClickListener(v -> finish());
+        btnVolver.setOnClickListener(v -> finish());
     }
     private void actualizarUsuario() {
         String nombre = etNombre.getText().toString().trim();

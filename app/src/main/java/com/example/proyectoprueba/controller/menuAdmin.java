@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.cardview.widget.CardView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,9 @@ import com.example.proyectoprueba.R;
 
 public class menuAdmin extends AppCompatActivity {
 
-    private Button btnAlertas, btnHistorial, btnProductos, btnListarProductos, btnVolver, btnAgregarAviso;
+    private Button btnVolver;
+
+    private CardView cardAlertas, cardHistorial, cardAvisos, cardProductos, cardListarProductos;
     private ProgressBar progressMenu;
 
 
@@ -21,38 +24,38 @@ public class menuAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_admin);
 
-        btnAlertas = findViewById(R.id.btnAlertas);
-        btnHistorial = findViewById(R.id.btnHistorial);
-        btnProductos = findViewById(R.id.btnProductos);
-        btnListarProductos = findViewById(R.id.btnListarProductos);
-        btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
+        cardAlertas = findViewById(R.id.cardAlertas);
+        cardHistorial = findViewById(R.id.cardHistorial);
+        cardAvisos = findViewById(R.id.cardAvisos);
+        cardProductos = findViewById(R.id.cardProductos);
+        cardListarProductos = findViewById(R.id.cardListarProductos);
+
         btnVolver = findViewById(R.id.btnVolver);
 
         progressMenu = findViewById(R.id.progress_menu);
 
         // Ir a Notificaciones
-        btnAlertas.setOnClickListener(v ->{
+        cardAlertas.setOnClickListener(v ->{
             navegar(new Intent(this, Notificaciones.class));
         });
 
         // Ir a Historial de Alertas
-        btnHistorial.setOnClickListener(v ->{
+        cardHistorial.setOnClickListener(v ->{
             navegar(new Intent(this, HistorialAlertas.class));
         });
 
-
         // Agregar Notificaciones
-        btnAgregarAviso.setOnClickListener(v ->{
+        cardAvisos.setOnClickListener(v ->{
             navegar(new Intent(this, agregarAlertas.class));
         });
 
         // Ir a Productos
-        btnProductos.setOnClickListener(v -> {
+        cardProductos.setOnClickListener(v -> {
             navegar(new Intent(this, agregarProducto.class));
         });
 
         // Boton para Listar Productos
-        btnListarProductos.setOnClickListener(v -> {
+        cardListarProductos.setOnClickListener(v -> {
             navegar(new Intent(this, categoriaProductos.class));
         });
 
@@ -65,10 +68,11 @@ public class menuAdmin extends AppCompatActivity {
     private void navegar(Intent intent){
         progressMenu.setVisibility(View.VISIBLE);
 
-        btnAlertas.setEnabled(false);
-        btnProductos.setEnabled(false);
-        btnListarProductos.setEnabled(false);
-        btnAgregarAviso.setEnabled(false);
+        cardAlertas.setEnabled(false);
+        cardHistorial.setEnabled(false);
+        cardAvisos.setEnabled(false);
+        cardProductos.setEnabled(false);
+        cardListarProductos.setEnabled(false);
         btnVolver.setEnabled(false);
 
         startActivity(intent);
@@ -79,10 +83,11 @@ public class menuAdmin extends AppCompatActivity {
         super.onResume();
         progressMenu.setVisibility(View.GONE);
 
-        btnAlertas.setEnabled(true);
-        btnProductos.setEnabled(true);
-        btnListarProductos.setEnabled(true);
-        btnAgregarAviso.setEnabled(true);
+        cardAlertas.setEnabled(true);
+        cardHistorial.setEnabled(true);
+        cardAvisos.setEnabled(true);
+        cardProductos.setEnabled(true);
+        cardListarProductos.setEnabled(true);
         btnVolver.setEnabled(true);
     }
 }

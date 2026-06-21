@@ -49,7 +49,13 @@ public class historialAdapter extends RecyclerView.Adapter<historialAdapter.View
                         + "\nStock Góndola: " + alerta.getStockGondola()
                         + "\nEstado: " + alerta.getEstado();
 
-        holder.txtHistorial.setText(detalle);
+        holder.txtNombreProducto.setText(alerta.getNombre());
+        holder.txtEstado.setText("RESUELTA");
+        holder.txtCodigo.setText("Código: " + alerta.getCodigoBarras());
+        holder.txtCategoria.setText("Categoría: " + alerta.getCategoria());
+        holder.txtCantidad.setText("Cantidad Faltante: " + alerta.getCantidadFaltante());
+        holder.txtBodega.setText("Stock Bodega: " + alerta.getStockBodega());
+        holder.txtGondola.setText("Stock Góndola: " + alerta.getStockGondola());
     }
 
     @Override
@@ -59,12 +65,24 @@ public class historialAdapter extends RecyclerView.Adapter<historialAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtHistorial;
+        TextView txtNombreProducto;
+        TextView txtEstado;
+        TextView txtCodigo;
+        TextView txtCategoria;
+        TextView txtCantidad;
+        TextView txtBodega;
+        TextView txtGondola;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtHistorial = itemView.findViewById(R.id.txtHistorial);
+            txtNombreProducto = itemView.findViewById(R.id.txtNombreProducto);
+            txtEstado = itemView.findViewById(R.id.txtEstado);
+            txtCodigo = itemView.findViewById(R.id.txtCodigo);
+            txtCategoria = itemView.findViewById(R.id.txtCategoria);
+            txtCantidad = itemView.findViewById(R.id.txtCantidad);
+            txtBodega = itemView.findViewById(R.id.txtBodega);
+            txtGondola = itemView.findViewById(R.id.txtGondola);
         }
     }
 }
