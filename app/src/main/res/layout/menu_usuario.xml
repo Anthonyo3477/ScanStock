@@ -36,13 +36,13 @@
             android:layout_marginBottom="16dp"
             android:text="Nuevo aviso de Productos" />
 
-        <!-- Botón Notificaciones -->
+        <!-- Botón de Alertas -->
         <Button
-            android:id="@+id/btnAviso"
+            android:id="@+id/btnAlertas"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Listar Avisos" />
+            android:text="Listar Alertas" />
 
         <!-- Botón Volver -->
         <Button

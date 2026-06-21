@@ -57,133 +57,127 @@ public class Notificaciones extends AppCompatActivity {
 
     private void cargarNotificaciones() {
 
-        db.collection("producto")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+        db.collection("producto").get().addOnSuccessListener(queryDocumentSnapshots -> {
 
-                    listaNotificaciones.clear();
-                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                        Producto producto = doc.toObject(Producto.class);
-                        if (producto == null) {
-                            continue;
-                        }
-                        producto.setId(doc.getId());
+            listaNotificaciones.clear();
+            for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                Producto producto = doc.toObject(Producto.class);
+                if (producto == null) {
+                    continue;
+                }
+                producto.setId(doc.getId());
 
-                        // ======================
-                        // STOCK BODEGA
-                        // ======================
+                // ======================
+                // STOCK BODEGA
+                // ======================
 
-                        if (producto.getStockBodega() <= STOCK_CRITICO) {
-                            String mensaje =
-                                    "Stock Crítico - Bodega: "
-                                    + producto.getNombre()
-                                    + " ("
-                                    + producto.getStockBodega()
-                                    + ")";
+                if (producto.getStockBodega() <= STOCK_CRITICO) {
+                    String mensaje =
+                            "Stock Crítico - Bodega: "
+                            + producto.getNombre()
+                            + " ("
+                            + producto.getStockBodega()
+                            + ")";
 
-                            listaNotificaciones.add(new Notificacion(
-                                    producto.getId(),
+                    listaNotificaciones.add(new Notificacion(
+                            producto.getId(),
                                     mensaje,
                                     "Critica",
                                     "Bodega",
                                     "pendiente"
-                                    )
-                            );
+                            )
+                    );
 
-                            guardarAlertaSiNoExiste(
-                                    producto,
-                                    "Bodega",
-                                    mensaje,
-                                    "Critica"
-                            );
+                    guardarAlertaSiNoExiste(
+                            producto,
+                            "Bodega",
+                            mensaje,
+                            "Critica"
+                    );
 
-                        }
-                        else if (producto.getStockBodega() <= STOCK_BAJO) {
-                            String mensaje =
-                                    "Stock Bajo - Bodega: "
-                                    + producto.getNombre()
-                                    + " ("
-                                    + producto.getStockBodega()
-                                    + ")";
+                } else if (producto.getStockBodega() <= STOCK_BAJO) {
+                    String mensaje =
+                            "Stock Bajo - Bodega: "
+                            + producto.getNombre()
+                            + " ("
+                            + producto.getStockBodega()
+                            + ")";
 
-                            listaNotificaciones.add(new Notificacion(
-                                    producto.getId(),
-                                    mensaje,
-                                    "Baja",
-                                    "Bodega",
-                                    "pendiente"
-                                    )
-                            );
+                    listaNotificaciones.add(new Notificacion(
+                            producto.getId(),
+                            mensaje,
+                            "Baja",
+                            "Bodega",
+                            "pendiente"
+                            )
+                    );
 
-                            guardarAlertaSiNoExiste(
-                                    producto,
-                                    "Bodega",
-                                    mensaje,
-                                    "Baja"
-                            );
-                        }
-
-                        // ======================
-                        // STOCK GÓNDOLA
-                        // ======================
-
-                        if (producto.getStockGondola() <= STOCK_CRITICO) {
-                            String mensaje =
-                                    "Stock Crítico - Góndola: "
-                                    + producto.getNombre()
-                                    + " ("
-                                    + producto.getStockGondola()
-                                    + ")";
-
-                            listaNotificaciones.add(new Notificacion(
-                                    producto.getId(),
-                                    mensaje,
-                                    "Critica",
-                                    "Gondola",
-                                    "pendiente"
-                                    )
-                            );
-
-                            guardarAlertaSiNoExiste(
-                                    producto,
-                                    "Gondola",
-                                    mensaje,
-                                    "Critica"
-                            );
-
-                        }
-                        else if (producto.getStockGondola() <= STOCK_BAJO) {
-                            String mensaje =
-                                    "Stock Bajo - Góndola: "
-                                    + producto.getNombre()
-                                    + " ("
-                                    + producto.getStockGondola()
-                                    + ")";
-
-                            listaNotificaciones.add(new Notificacion(
-                                    producto.getId(),
-                                    mensaje,
-                                    "Baja",
-                                    "Gondola",
-                                    "pendiente"
-                                    )
-                            );
-
-                            guardarAlertaSiNoExiste(
-                                    producto,
-                                    "Gondola",
-                                    mensaje,
-                                    "Baja"
-                            );
-                        }
+                    guardarAlertaSiNoExiste(
+                            producto,
+                            "Bodega",
+                            mensaje,
+                            "Baja"
+                        );
                     }
 
-                    // Cargar alertas manuales después
+                    // ======================
+                    // STOCK GÓNDOLA
+                    // ======================
+
+                    if (producto.getStockGondola() <= STOCK_CRITICO) {
+                        String mensaje =
+                                "Stock Crítico - Góndola: "
+                                + producto.getNombre()
+                                + " ("
+                                + producto.getStockGondola()
+                                + ")";
+
+                        listaNotificaciones.add(new Notificacion(
+                                producto.getId(),
+                                mensaje,
+                                "Critica",
+                                "Gondola",
+                                "pendiente"
+                                )
+                        );
+
+                        guardarAlertaSiNoExiste(
+                                producto,
+                                "Gondola",
+                                mensaje,
+                                "Critica"
+                        );
+                    } else if (producto.getStockGondola() <= STOCK_BAJO) {
+                        String mensaje =
+                                "Stock Bajo - Góndola: "
+                                + producto.getNombre()
+                                + " ("
+                                + producto.getStockGondola()
+                                + ")";
+
+                        listaNotificaciones.add(new Notificacion(
+                                producto.getId(),
+                                mensaje,
+                                "Baja",
+                                "Gondola",
+                                "pendiente"
+                                )
+                        );
+
+                        guardarAlertaSiNoExiste(
+                                producto,
+                                "Gondola",
+                                mensaje,
+                                "Baja"
+                        );
+                    }
+            }
+
+            // Cargar alertas manuales después
                     cargarAlertasManuales();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error al cargar las notificaciones", Toast.LENGTH_SHORT).show();
-                });
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Error al cargar las notificaciones", Toast.LENGTH_SHORT).show();
+        });
     }
 
     // Metodo para las Alertas Manuales
@@ -216,11 +210,7 @@ public class Notificaciones extends AppCompatActivity {
     }
 
     // Metodo para guardar alertas en FireStore
-    private void guardarAlerta(
-            Producto producto,
-            String tipo,
-            String mensaje,
-            String prioridad) {
+    private void guardarAlerta(Producto producto, String tipo, String mensaje, String prioridad) {
 
         Map<String, Object> alerta = new HashMap<>();
 
@@ -231,33 +221,16 @@ public class Notificaciones extends AppCompatActivity {
         alerta.put("fecha", System.currentTimeMillis());
         alerta.put("estado", "pendiente");
 
-        db.collection("alertas")
-                .add(alerta);
+        db.collection("alertas").add(alerta);
     }
 
     // Metodo para Alertas Duplicadas
-    private void guardarAlertaSiNoExiste(
-            Producto producto,
-            String tipo,
-            String mensaje,
-            String prioridad) {
+    private void guardarAlertaSiNoExiste(Producto producto, String tipo, String mensaje, String prioridad) {
+        db.collection("alertas").whereEqualTo("idProducto", producto.getId()).whereEqualTo("tipo", tipo).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(query -> {
 
-        db.collection("alertas")
-                .whereEqualTo("idProducto", producto.getId())
-                .whereEqualTo("tipo", tipo)
-                .whereEqualTo("estado", "pendiente")
-                .get()
-                .addOnSuccessListener(query -> {
-
-                    if (query.isEmpty()) {
-
-                        guardarAlerta(
-                                producto,
-                                tipo,
-                                mensaje,
-                                prioridad
-                        );
-                    }
-                });
+            if (query.isEmpty()) {
+                guardarAlerta(producto, tipo, mensaje, prioridad);
+            }
+        });
     }
 }

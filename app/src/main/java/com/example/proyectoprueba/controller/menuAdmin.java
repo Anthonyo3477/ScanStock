@@ -12,7 +12,7 @@ import com.example.proyectoprueba.R;
 
 public class menuAdmin extends AppCompatActivity {
 
-    private Button btnAvisos, btnProductos, btnListarProductos, btnVolver, btnAgregarAviso;
+    private Button btnAlertas, btnHistorial, btnProductos, btnListarProductos, btnVolver, btnAgregarAviso;
     private ProgressBar progressMenu;
 
 
@@ -21,7 +21,8 @@ public class menuAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_admin);
 
-        btnAvisos = findViewById(R.id.btnAvisos);
+        btnAlertas = findViewById(R.id.btnAlertas);
+        btnHistorial = findViewById(R.id.btnHistorial);
         btnProductos = findViewById(R.id.btnProductos);
         btnListarProductos = findViewById(R.id.btnListarProductos);
         btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
@@ -30,9 +31,15 @@ public class menuAdmin extends AppCompatActivity {
         progressMenu = findViewById(R.id.progress_menu);
 
         // Ir a Notificaciones
-        btnAvisos.setOnClickListener( v ->{
+        btnAlertas.setOnClickListener(v ->{
             navegar(new Intent(this, Notificaciones.class));
         });
+
+        // Ir a Historial de Alertas
+        btnHistorial.setOnClickListener(v ->{
+            navegar(new Intent(this, HistorialAlertas.class));
+        });
+
 
         // Agregar Notificaciones
         btnAgregarAviso.setOnClickListener(v ->{
@@ -58,7 +65,7 @@ public class menuAdmin extends AppCompatActivity {
     private void navegar(Intent intent){
         progressMenu.setVisibility(View.VISIBLE);
 
-        btnAvisos.setEnabled(false);
+        btnAlertas.setEnabled(false);
         btnProductos.setEnabled(false);
         btnListarProductos.setEnabled(false);
         btnAgregarAviso.setEnabled(false);
@@ -72,7 +79,7 @@ public class menuAdmin extends AppCompatActivity {
         super.onResume();
         progressMenu.setVisibility(View.GONE);
 
-        btnAvisos.setEnabled(true);
+        btnAlertas.setEnabled(true);
         btnProductos.setEnabled(true);
         btnListarProductos.setEnabled(true);
         btnAgregarAviso.setEnabled(true);

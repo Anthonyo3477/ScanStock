@@ -16,7 +16,7 @@ import java.util.Map;
 public class modificarUsuario extends AppCompatActivity {
 
     private EditText etNombre, etRut, etDireccion, etCorreo, etRol;
-    private Button btnActualizar;
+    private Button btnActualizar, btnVolver;
     private FirebaseFirestore db;
     private String idUsuario;
 
@@ -43,6 +43,7 @@ public class modificarUsuario extends AppCompatActivity {
         etRol.setText(getIntent().getStringExtra("rol"));
 
         btnActualizar.setOnClickListener(v -> actualizarUsuario());
+        //btnVolver.setOnClickListener(v -> finish());
     }
     private void actualizarUsuario() {
         String nombre = etNombre.getText().toString().trim();
@@ -63,9 +64,7 @@ public class modificarUsuario extends AppCompatActivity {
         datosActualizados.put("correo", correo);
         datosActualizados.put("rol", rol);
 
-        db.collection("usuarios")
-                .document(idUsuario)
-                .update(datosActualizados)
+        db.collection("usuarios").document(idUsuario).update(datosActualizados)
                 .addOnSuccessListener(unused -> {
                     Toast.makeText(this, "Usuario actualizado", Toast.LENGTH_SHORT).show();
                     finish();

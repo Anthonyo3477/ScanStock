@@ -11,7 +11,7 @@ import com.example.proyectoprueba.R;
 
 public class menuSuperAdmin extends AppCompatActivity {
 
-    private Button btnAvisos, btnAgregarAviso, btnlistarUsuarios, btnVolver, btnGenerarReporte, btnAgregarPersonal;
+    private Button btnAlertas, btnHistorial, btnAgregarAviso, btnlistarUsuarios, btnVolver, btnGenerarReporte, btnAgregarPersonal;
     private ProgressBar progressMenu;
 
 
@@ -20,7 +20,8 @@ public class menuSuperAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_super_admin);
 
-        btnAvisos = findViewById(R.id.btnAvisos);
+        btnAlertas = findViewById(R.id.btnAlertas);
+        btnHistorial = findViewById(R.id.btnHistorial);
         btnAgregarAviso = findViewById(R.id.btnAgregarAviso);
         btnlistarUsuarios = findViewById(R.id.btnlistarUsuarios);
         btnGenerarReporte = findViewById(R.id.btnGenerarReporte);
@@ -28,10 +29,16 @@ public class menuSuperAdmin extends AppCompatActivity {
         btnVolver = findViewById(R.id.btnVolver);
         progressMenu = findViewById(R.id.progress_menu);
 
-        // Ir a Notificaciones
-        btnAvisos.setOnClickListener(v ->{
+        // Ir a Alertas
+        btnAlertas.setOnClickListener(v ->{
             navegar(new Intent(this, Notificaciones.class));
         });
+
+        // Ir a Historial de Alertas
+        btnHistorial.setOnClickListener(v ->{
+            navegar(new Intent(this, HistorialAlertas.class));
+        });
+
 
         // Ir a Agregar Aviso
         btnAgregarAviso.setOnClickListener( v ->{
@@ -67,7 +74,7 @@ public class menuSuperAdmin extends AppCompatActivity {
     private void navegar(Intent intent){
         progressMenu.setVisibility(View.VISIBLE);
 
-        btnAvisos.setEnabled(false);
+        btnAlertas.setEnabled(false);
         btnAgregarAviso.setEnabled(false);
         btnlistarUsuarios.setEnabled(false);
         btnGenerarReporte.setEnabled(false);
@@ -82,7 +89,7 @@ public class menuSuperAdmin extends AppCompatActivity {
         super.onResume();
         progressMenu.setVisibility(View.GONE);
 
-        btnAvisos.setEnabled(true);
+        btnAlertas.setEnabled(true);
         btnAgregarAviso.setEnabled(true);
         btnlistarUsuarios.setEnabled(true);
         btnGenerarReporte.setEnabled(true);

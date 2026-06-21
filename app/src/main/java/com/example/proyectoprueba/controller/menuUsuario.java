@@ -12,7 +12,7 @@ import com.example.proyectoprueba.R;
 
 public class menuUsuario extends AppCompatActivity {
 
-    private Button btnAvisoProducto, btnAviso, btnVolver;
+    private Button btnAvisoProducto, btnAlertas, btnVolver;
     private ProgressBar progressMenu;
 
     @Override
@@ -21,7 +21,7 @@ public class menuUsuario extends AppCompatActivity {
         setContentView(R.layout.menu_usuario);
 
         btnAvisoProducto = findViewById(R.id.btnAvisoProducto);
-        btnAviso = findViewById(R.id.btnAviso);
+        btnAlertas = findViewById(R.id.btnAlertas);
         btnVolver = findViewById(R.id.btnVolver);
 
         progressMenu = findViewById(R.id.progress_menu);
@@ -32,7 +32,7 @@ public class menuUsuario extends AppCompatActivity {
         });
 
 
-        btnAviso.setOnClickListener( v ->{
+        btnAlertas.setOnClickListener( v ->{
             navegar(new Intent(this, Notificaciones.class));
         });
 
@@ -46,7 +46,7 @@ public class menuUsuario extends AppCompatActivity {
         progressMenu.setVisibility(View.VISIBLE);
 
         btnAvisoProducto.setEnabled(false);
-        btnAviso.setEnabled(false);
+        btnAlertas.setEnabled(false);
         btnVolver.setEnabled(false);
 
         startActivity(intent);
@@ -58,7 +58,7 @@ public class menuUsuario extends AppCompatActivity {
         progressMenu.setVisibility(View.GONE);
 
         btnAvisoProducto.setEnabled(true);
-        btnAviso.setEnabled(true);
+        btnAlertas.setEnabled(true);
         btnVolver.setEnabled(true);
     }
 }

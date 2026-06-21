@@ -28,13 +28,21 @@
             android:visibility="gone"
             android:indeterminate="true"/>
 
-        <!-- Botón Notificaciones -->
+        <!-- Botón de Alertas -->
         <Button
-            android:id="@+id/btnAvisos"
+            android:id="@+id/btnAlertas"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Notificaciones" />
+            android:text="Alertas" />
+
+        <!-- Botón Hisotorial de Alertas -->
+        <Button
+            android:id="@+id/btnHistorial"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Historial de Alertas" />
 
         <!-- Botón Agregar Notificaciones -->
         <Button

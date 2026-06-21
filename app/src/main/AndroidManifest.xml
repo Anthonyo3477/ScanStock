@@ -37,6 +37,7 @@
         <activity android:name=".controller.modificarUsuario" />
         <activity android:name=".controller.modificarProducto" />
         <activity android:name=".controller.reponerProducto" />
+        <activity android:name=".controller.HistorialAlertas" />
 
     </application>
 </manifest>
