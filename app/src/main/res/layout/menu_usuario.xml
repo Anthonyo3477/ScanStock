@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
         android:padding="24dp">
 
         <!-- Título -->
@@ -15,41 +15,108 @@
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Menú Principal de Trabajador"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:text="Panel del Trabajador"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido Trabajador"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
 
         <ProgressBar
             android:id="@+id/progress_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:visibility="gone"
-            android:indeterminate="true"/>
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
-        <!-- Botón Productos -->
-        <Button
-            android:id="@+id/btnAvisoProducto"
-            android:layout_width="200dp"
+        <!-- Fila de tarjetas -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Nuevo aviso de Productos" />
+            android:orientation="horizontal">
 
-        <!-- Botón de Alertas -->
-        <Button
-            android:id="@+id/btnAlertas"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Listar Alertas" />
+            <!-- Nueva Alerta -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardNuevoAviso"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="6dp">
 
-        <!-- Botón Volver -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/icon_agregar"
+                        android:contentDescription="Nuevo Aviso"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nuevo Aviso"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Listar Alertas -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAlertas"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/icon_alertas"
+                        android:contentDescription="Alertas"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alertas"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Botón volver -->
         <Button
             android:id="@+id/btnVolver"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver" />
+            android:text="Volver"
+            android:layout_marginTop="350dp"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
