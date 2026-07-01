@@ -60,11 +60,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="🔔"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_alertas"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Alertas"
@@ -91,11 +91,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="📜"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_historial"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Historial"
@@ -132,11 +132,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="➕"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_agregar"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Avisos"
@@ -163,11 +163,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="👤"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_personal"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Personal"
@@ -204,11 +204,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="📋"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_user_list"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Usuarios"
@@ -235,11 +235,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="📊"
-                        android:textSize="32sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/icon_reportes"
+                        android:contentDescription="Icono de Alertas"/>
 
                     <TextView
                         android:text="Reportes"
