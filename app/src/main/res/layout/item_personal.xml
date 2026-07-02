@@ -1,88 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    card_view:cardCornerRadius="10dp"
-    card_view:cardElevation="4dp">
+    android:layout_margin="10dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/txtNombreUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre del Personal"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtRut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rut"
-            android:textColor="#666"
-            android:layout_marginTop="4dp"/>
-
-        <TextView
-            android:id="@+id/txtDireccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dirección"
-            android:textColor="#666"
-            android:layout_marginTop="4dp"/>
-
-        <TextView
-            android:id="@+id/txtCorreo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Correo"
-            android:textColor="#666"
-            android:layout_marginTop="4dp"/>
-
-        <TextView
-            android:id="@+id/txtRol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rol"
-            android:textColor="#666"
-            android:layout_marginTop="4dp"/>
-
-        <!-- Contenedor horizontal para los botones -->
+        <!-- Encabezado -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="end"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:layout_marginTop="12dp">
+            android:gravity="center_vertical">
 
-            <Button
-                android:id="@+id/btnModificarPersonal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Modificar"
-                android:layout_marginEnd="8dp"
-                android:focusable="true"
-                android:clickable="true" />
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/icon_personal"
+                android:contentDescription="Usuario"/>
 
-            <Button
-                android:id="@+id/btnEliminarPersonal"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Eliminar"
-                android:focusable="true"
-                android:clickable="true" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:id="@+id/txtNombreUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del Personal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtRol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Administrador"
+                    android:textColor="#6A1B9A"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
         </LinearLayout>
 
+        <!-- Datos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/txtRut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RUT: "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/txtDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/txtCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnModificarPersonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar"
+                app:icon="@drawable/icon_editar"
+                app:iconGravity="textStart"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEliminarPersonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Eliminar"
+                app:icon="@drawable/icon_eliminar"
+                app:iconGravity="textStart"/>
+        </LinearLayout>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
