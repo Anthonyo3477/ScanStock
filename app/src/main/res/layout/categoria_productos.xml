@@ -138,7 +138,7 @@
                     android:id="@+id/btnBebidas"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/bebidas" />
+                    android:background="@drawable/bebestibles" />
 
                 <TextView
                     android:layout_width="wrap_content"
