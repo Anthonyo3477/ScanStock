@@ -46,8 +46,7 @@
                     android:id="@+id/btnPanaderia"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Panaderia" />
+                    android:background="@drawable/pan" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -67,8 +66,7 @@
                     android:id="@+id/btnAbarrotes"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Abarrotes"/>
+                    android:background="@drawable/abarrotes" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,8 +87,7 @@
                     android:id="@+id/btnLacteos"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Lacteos"/>
+                    android:background="@drawable/leche" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,8 +117,7 @@
                     android:id="@+id/btnRefrigerados"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Refrigerados"/>
+                    android:background="@drawable/pescado" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -142,13 +138,12 @@
                     android:id="@+id/btnBebidas"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Bebidas"/>
+                    android:background="@drawable/bebidas" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bebidas"
+                    android:text="Bebestibles"
                     android:layout_marginTop="6dp"/>
             </LinearLayout>
 
@@ -164,8 +159,7 @@
                     android:id="@+id/btnLimpieza"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Limpieza"/>
+                    android:background="@drawable/productos" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -197,8 +191,7 @@
                     android:id="@+id/btnBebe"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Bebe"/>
+                    android:background="@drawable/bebe" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -219,8 +212,7 @@
                     android:id="@+id/btnMascota"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Mascota"/>
+                    android:background="@drawable/perro" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -241,8 +233,7 @@
                     android:id="@+id/btnOtros"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:contentDescription="Otros"/>
+                    android:background="@drawable/otros" />
 
                 <TextView
                     android:layout_width="wrap_content"
