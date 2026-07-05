@@ -43,14 +43,10 @@ public class agregarProducto extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        // configuracion de spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.categorias_array,
-                android.R.layout.simple_spinner_item
-        );
+        // Configuración del Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_drop_item);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCategoria.setAdapter(adapter);
 
         btnGuardar.setOnClickListener(v -> guardarProducto());

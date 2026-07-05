@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
+    android:background="@drawable/fondo"
     android:gravity="center_horizontal">
 
     <!-- Título -->
@@ -13,6 +14,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
         android:layout_marginBottom="32dp" />
 
     <!-- Nombre -->
@@ -21,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Correo -->
     <EditText
@@ -29,7 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="RUT"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Direccion -->
     <EditText
@@ -37,7 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Direccion"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Correo -->
     <EditText
@@ -45,7 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Correo -->
     <EditText
@@ -53,7 +63,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Rol -->
     <EditText
@@ -61,7 +73,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Rol"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
 
     <!-- Botón Guardar -->
     <Button

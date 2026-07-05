@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/fondo">
 
     <!-- Título -->
     <TextView
@@ -13,6 +14,7 @@
         android:text="Agregar Producto"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:layout_marginBottom="32dp" />
 
     <!-- Nombre -->
@@ -21,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Marca -->
@@ -29,6 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Marca"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Categoría -->
@@ -45,6 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Fecha De Caducidad"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="24dp" />
 
     <!-- Código de Barras -->
@@ -54,6 +62,8 @@
         android:layout_height="wrap_content"
         android:hint="Código de Barras"
         android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Cantidad -->
@@ -63,6 +73,8 @@
         android:layout_height="wrap_content"
         android:hint="Nueva Cantidad de Productos en Bodega"
         android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Stock Bodega -->
@@ -72,6 +84,8 @@
         android:layout_height="wrap_content"
         android:hint="Stock Bodega"
         android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Stock Gondola -->
@@ -81,6 +95,8 @@
         android:layout_height="wrap_content"
         android:hint="Stock Gondola"
         android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
     <!-- Botón Guardar -->
