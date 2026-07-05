@@ -62,7 +62,7 @@
         android:id="@+id/etContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo"
+        android:hint="Contraseña"
         android:layout_marginBottom="16dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"/>

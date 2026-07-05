@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity {
 
     private EditText etCorreo, etContraseña;
-    private Button btnIngresar, btnCerrarSecion;
+    private Button btnIngresar, btnCerrarSecion, btnRegistrar;
     private ProgressBar progressLogin;
 
     private FirebaseAuth auth;
@@ -32,6 +32,7 @@ public class Login extends AppCompatActivity {
         etContraseña = findViewById(R.id.etContraseña);
 
         btnIngresar = findViewById(R.id.btnIngresar);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
         btnCerrarSecion = findViewById(R.id.btnCerrarSecion);
         progressLogin = findViewById(R.id.progress_login);
 
@@ -40,6 +41,11 @@ public class Login extends AppCompatActivity {
 
         btnIngresar.setOnClickListener(v -> loginUsuario());
         btnCerrarSecion.setOnClickListener(v -> finish());
+
+        btnRegistrar.setOnClickListener(v -> {
+            Intent intent = new Intent(Login.this, registrarPersonal.class);
+            startActivity(intent);
+        });
     }
 
     private void loginUsuario() {
