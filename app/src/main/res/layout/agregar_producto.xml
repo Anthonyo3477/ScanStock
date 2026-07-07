@@ -104,18 +104,21 @@
         android:id="@+id/btnGuardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Guardar Producto" />
 
     <Button
         android:id="@+id/btnEscanear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Escanear Producto" />
 
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Volver" />
 
 </LinearLayout>

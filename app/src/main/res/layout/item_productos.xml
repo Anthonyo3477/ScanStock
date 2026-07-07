@@ -80,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Editar"
                 app:icon="@drawable/icon_editar"
+                android:backgroundTint="#CCC100"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton
@@ -89,6 +90,7 @@
                 android:layout_marginStart="10dp"
                 android:text="Eliminar"
                 app:icon="@drawable/icon_eliminar"
+                android:backgroundTint="#CC0E00"
                 app:iconGravity="textStart"/>
         </LinearLayout>
 

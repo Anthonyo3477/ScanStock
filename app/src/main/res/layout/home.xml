@@ -42,6 +42,7 @@
             android:layout_width="260dp"
             android:layout_height="55dp"
             android:text="Iniciar Sesión"
+            android:backgroundTint="#9055EA"
             android:textSize="18sp"/>
 
         <ProgressBar

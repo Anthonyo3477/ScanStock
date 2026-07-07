@@ -82,12 +82,14 @@
         android:id="@+id/btnGuardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Ingresar Personal" />
 
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Volver" />
 
 </LinearLayout>

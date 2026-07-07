@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:backgroundTint="#9055EA"
         android:text="Ingresar" />
 
 
@@ -62,6 +63,7 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Registrar" />
 
     <!-- Boton Cerrar Secion -->
@@ -69,6 +71,7 @@
         android:id="@+id/btnCerrarSecion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#9055EA"
         android:text="Cerrar Secion" />
 
 </LinearLayout>
