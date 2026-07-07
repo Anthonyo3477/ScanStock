@@ -5,7 +5,7 @@ public class alertasManual {
     private String idProducto;
     private String nombre;
     private String categoria;
-    private int codigoBarras;
+    private long codigoBarras;
     private int cantidadFaltante;
     private int stockBodega;
     private int stockGondola;
@@ -16,7 +16,7 @@ public class alertasManual {
     public alertasManual() {
     }
 
-    public alertasManual(String idProducto, String nombre, String categoria, int codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, long fecha, String estado, String tipo) {
+    public alertasManual(String idProducto, String nombre, String categoria, long codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, long fecha, String estado, String tipo) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -53,11 +53,11 @@ public class alertasManual {
         this.categoria = categoria;
     }
 
-    public int getCodigoBarras() {
+    public long getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(int codigoBarras) {
+    public void setCodigoBarras(long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 

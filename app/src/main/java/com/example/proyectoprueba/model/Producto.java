@@ -11,14 +11,14 @@ public class Producto {
     private String categoria;
     private String fechaCaducidad;
     private int cantidad;
-    private int codigoBarras;
+    private long codigoBarras;
     private int stockBodega;
     private int stockGondola;
 
     public Producto() {
     }
 
-    public Producto(String id ,String nombre, String marca, String categoria, String fechaCaducidad, int cantidad, int codigoBarras, int stockBodega, int stockGondola) {
+    public Producto(String id ,String nombre, String marca, String categoria, String fechaCaducidad, int cantidad, long codigoBarras, int stockBodega, int stockGondola) {
         this.id = id;
         this.nombre = nombre;
         this.marca = marca;
@@ -78,11 +78,11 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public int getCodigoBarras() {
+    public long getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(int codigoBarras) {
+    public void setCodigoBarras(long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 

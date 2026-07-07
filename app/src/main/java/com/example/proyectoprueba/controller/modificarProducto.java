@@ -15,12 +15,8 @@ import java.util.Map;
 
 public class modificarProducto extends AppCompatActivity {
 
-    private EditText etNombreProducto, etMarca, etCategoria,
-            etFechaCaducidad, etCodigoBarras,
-            etCantidad, etStockBodega, etStockGondola;
-
+    private EditText etNombreProducto, etMarca, etCategoria, etFechaCaducidad, etCodigoBarras, etCantidad, etStockBodega, etStockGondola;
     private Button btnActualizar, btnVolver;
-
     private FirebaseFirestore db;
     private String idProducto;
 
@@ -56,7 +52,7 @@ public class modificarProducto extends AppCompatActivity {
         etFechaCaducidad.setText(getIntent().getStringExtra("fechaCaducidad"));
 
         // Datos numericos
-        int codigoBarras = getIntent().getIntExtra("codigoBarras", 0);
+        long codigoBarras = getIntent().getIntExtra("codigoBarras", 0);
         int cantidad = getIntent().getIntExtra("cantidad", 0);
         int stockBodega = getIntent().getIntExtra("stockBodega", 0);
         int stockGondola = getIntent().getIntExtra("stockGondola", 0);
@@ -80,7 +76,7 @@ public class modificarProducto extends AppCompatActivity {
         String categoria = etCategoria.getText().toString().trim();
         String fechaCaducidad = etFechaCaducidad.getText().toString().trim();
 
-        int codigoBarras = Integer.parseInt(etCodigoBarras.getText().toString().trim());
+        long codigoBarras = Long.parseLong(etCodigoBarras.getText().toString().trim());
         int cantidad = Integer.parseInt(etCantidad.getText().toString().trim());
         int stockBodega = Integer.parseInt(etStockBodega.getText().toString().trim());
         int stockGondola = Integer.parseInt(etStockGondola.getText().toString().trim());

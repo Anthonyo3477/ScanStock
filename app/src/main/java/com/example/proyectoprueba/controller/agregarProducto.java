@@ -8,10 +8,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +53,7 @@ public class agregarProducto extends AppCompatActivity {
         spCategoria.setAdapter(adapter);
 
         btnGuardar.setOnClickListener(v -> guardarProducto());
+        btnEscanear.setOnClickListener(v -> iniciarEscaneo());
         btnVolver.setOnClickListener(v -> finish());
     }
 
@@ -67,9 +71,7 @@ public class agregarProducto extends AppCompatActivity {
 
         Toast.makeText(this, "Categoria seleccionada: " + categoria, Toast.LENGTH_LONG).show();
 
-        if (nombre.isEmpty() || marca.isEmpty() ||
-                categoria.equals("Seleccione categoría") ||
-                fechaCaducidad.isEmpty()) {
+        if (nombre.isEmpty() || marca.isEmpty() || categoria.equals("Seleccione categoría") || fechaCaducidad.isEmpty()) {
 
             Toast.makeText(this, "Complete todos los campos correctamente", Toast.LENGTH_SHORT).show();
             return;
@@ -84,7 +86,7 @@ public class agregarProducto extends AppCompatActivity {
             return;
         }
 
-        int codigoBarras = Integer.parseInt(codigoBarrasStr);
+        long codigoBarras = Long.parseLong(codigoBarrasStr);
         int cantidad = Integer.parseInt(cantidadStr);
         int stockBodega = Integer.parseInt(stockBodegaStr);
         int stockGondola = Integer.parseInt(stockGondolaStr);
@@ -99,14 +101,30 @@ public class agregarProducto extends AppCompatActivity {
         producto.put("stockBodega", stockBodega);
         producto.put("stockGondola", stockGondola);
 
-        db.collection("producto")
-                .add(producto)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(this, "Producto agregado correctamente", Toast.LENGTH_SHORT).show();
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                });
+        db.collection("producto").add(producto).addOnSuccessListener(documentReference -> {
+            Toast.makeText(this, "Producto agregado correctamente", Toast.LENGTH_SHORT).show();
+            finish();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        });
+    }
+
+
+    private final ActivityResultLauncher<ScanOptions> barcodeLaunch = registerForActivityResult(new ScanContract(), result ->{
+
+        if(result.getContents() != null){
+            etCodigoBarras.setText(result.getContents());
+        }
+    });
+
+    private void iniciarEscaneo(){
+
+        ScanOptions opciones = new ScanOptions();
+
+        opciones.setPrompt("Escanee el codigo de barras");
+        opciones.setBeepEnabled(true);
+        opciones.setOrientationLocked(false);
+
+        barcodeLaunch.launch(opciones);
     }
 }

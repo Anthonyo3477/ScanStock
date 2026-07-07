@@ -6,7 +6,7 @@ public class historialAlertas {
 
     private String nombre;
     private String categoria;
-    private int codigoBarras;
+    private long codigoBarras;
     private int cantidadFaltante;
     private int stockBodega;
     private int stockGondola;
@@ -15,7 +15,7 @@ public class historialAlertas {
     public historialAlertas() {
     }
 
-    public historialAlertas(String idProducto, String nombre, String categoria, int codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, String estado) {
+    public historialAlertas(String idProducto, String nombre, String categoria, long codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, String estado) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -50,11 +50,11 @@ public class historialAlertas {
         this.categoria = categoria;
     }
 
-    public int getCodigoBarras() {
+    public long getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(int codigoBarras) {
+    public void setCodigoBarras(long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 

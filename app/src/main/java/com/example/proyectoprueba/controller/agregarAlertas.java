@@ -72,7 +72,7 @@ public class agregarAlertas extends AppCompatActivity {
             return;
         }
 
-        int codigoBarras;
+        long codigoBarras;
         int cantidad;
         int stockBodega;
         int stockGondola;

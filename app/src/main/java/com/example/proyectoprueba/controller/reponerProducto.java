@@ -80,7 +80,7 @@ public class reponerProducto extends AppCompatActivity {
     }
 
     private void reponerProducto(String codigo, int cantidad, String destino) {
-        int codigoBarras;
+        long codigoBarras;
 
         try {
             codigoBarras = Integer.parseInt(codigo);
@@ -137,7 +137,7 @@ public class reponerProducto extends AppCompatActivity {
         }).addOnFailureListener(e -> Toast.makeText(this, "Error al buscar el producto", Toast.LENGTH_LONG).show());
     }
 
-    private void resolverAlerta(int codigoBarras) {
+    private void resolverAlerta(long codigoBarras) {
         db.collection("alertas").whereEqualTo("codigoBarras", codigoBarras).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(queryDocumentSnapshots -> {
             Toast.makeText(this, "Alertas encontradas: " + queryDocumentSnapshots.size(), Toast.LENGTH_LONG).show();
 

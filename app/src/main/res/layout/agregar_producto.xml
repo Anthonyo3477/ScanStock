@@ -1,124 +1,138 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
-    android:background="@drawable/fondo">
+    android:fillViewport="true">
 
-    <!-- Título -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Agregar Producto"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="32dp" />
-
-    <!-- Nombre -->
-    <EditText
-        android:id="@+id/etNombre"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/fondo">
 
-    <!-- Marca -->
-    <EditText
-        android:id="@+id/etMarca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Marca"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="32dp"
+            android:text="Agregar Producto"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <!-- Categoría -->
-    <Spinner
-        android:id="@+id/spCategoria"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:entries="@array/categorias_array" />
+        <!-- Nombre -->
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nombre"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Fecha De Caducidad -->
-    <EditText
-        android:id="@+id/etfechaCaducidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Fecha De Caducidad"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="24dp" />
+        <!-- Marca -->
+        <EditText
+            android:id="@+id/etMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Marca"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Código de Barras -->
-    <EditText
-        android:id="@+id/etCodigoBarras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Código de Barras"
-        android:inputType="number"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        <!-- Categoría -->
+        <Spinner
+            android:id="@+id/spCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/categorias_array" />
 
-    <!-- Cantidad -->
-    <EditText
-        android:id="@+id/etCantidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nueva Cantidad de Productos en Bodega"
-        android:inputType="number"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        <!-- Fecha -->
+        <EditText
+            android:id="@+id/etfechaCaducidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Fecha de Caducidad"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Stock Bodega -->
-    <EditText
-        android:id="@+id/etStockBodega"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Stock Bodega"
-        android:inputType="number"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        <!-- Código -->
+        <EditText
+            android:id="@+id/etCodigoBarras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Código de Barras"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Stock Gondola -->
-    <EditText
-        android:id="@+id/etStockGondola"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Stock Gondola"
-        android:inputType="number"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginBottom="16dp" />
+        <!-- Cantidad -->
+        <EditText
+            android:id="@+id/etCantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Cantidad"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Botón Guardar -->
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9055EA"
-        android:text="Guardar Producto" />
+        <!-- Stock Bodega -->
+        <EditText
+            android:id="@+id/etStockBodega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Stock Bodega"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnEscanear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9055EA"
-        android:text="Escanear Producto" />
+        <!-- Stock Góndola -->
+        <EditText
+            android:id="@+id/etStockGondola"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Stock Góndola"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9055EA"
-        android:text="Volver" />
+        <!-- Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#9055EA"
+            android:text="Guardar Producto" />
 
-</LinearLayout>
+        <!-- Escanear -->
+        <Button
+            android:id="@+id/btnEscanear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#9055EA"
+            android:text="Escanear Producto" />
+
+        <!-- Volver -->
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#9055EA"
+            android:text="Volver" />
+
+    </LinearLayout>
+
+</ScrollView>
