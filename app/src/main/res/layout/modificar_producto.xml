@@ -1,109 +1,114 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@drawable/fondo"
-    android:gravity="center_horizontal">
+    android:fillViewport="true">
 
-    <!-- Título -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modificar Producto"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="25dp"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="32dp" />
-
-    <EditText
-        android:id="@+id/etNombreProducto"
-        android:hint="Nombre Producto"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etMarca"
-        android:hint="Marca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="32dp"
+            android:text="Modificar Producto"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etCategoria"
-        android:hint="Categoria"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        <EditText
+            android:id="@+id/etNombreProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nombre Producto"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etFechaCaducidad"
-        android:hint="Fecha de Caducidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        <EditText
+            android:id="@+id/etMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Marca"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etCodigoBarras"
-        android:hint="Codigos De Barras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Categoria"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etCantidad"
-        android:hint="Cantidad de Producto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etFechaCaducidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Fecha de Caducidad"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etStockBodega"
-        android:hint="Stock en Bodega"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etCodigoBarras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Codigos De Barras"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etStockGondola"
-        android:hint="Stock en Gondola"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etCantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Cantidad de Producto"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnActualizar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#9055EA"
-        android:text="Actualizar" />
+        <EditText
+            android:id="@+id/etStockBodega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Stock en Bodega"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#9055EA"
-        android:text="Volver" />
+        <EditText
+            android:id="@+id/etStockGondola"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Stock en Gondola"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#9055EA"
+            android:text="Actualizar" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#9055EA"
+            android:text="Volver" />
+
+    </LinearLayout>
+</ScrollView>

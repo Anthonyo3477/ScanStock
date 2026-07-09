@@ -1,82 +1,87 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@drawable/fondo"
-    android:gravity="center_horizontal">
+    android:fillViewport="true">
 
-    <!-- Título -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modificar Personal"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="40dp"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="32dp" />
-
-    <EditText
-        android:id="@+id/etNombre"
-        android:hint="Nombre"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etRut"
-        android:hint="Rut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="32dp"
+            android:text="Modificar Personal"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etDireccion"
-        android:hint="Dirección"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Nombre"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etCorreo"
-        android:hint="Correo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etRut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Rut"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etRol"
-        android:hint="Rol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Dirección"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnActualizar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#9055EA"
-        android:text="Actualizar" />
+        <EditText
+            android:id="@+id/etCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Correo"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#9055EA"
-        android:text="Volver" />
+        <EditText
+            android:id="@+id/etRol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Rol"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#9055EA"
+            android:text="Actualizar" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#9055EA"
+            android:text="Volver" />
+
+    </LinearLayout>
+</ScrollView>

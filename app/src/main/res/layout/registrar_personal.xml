@@ -1,95 +1,101 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@drawable/fondo"
-    android:gravity="center_horizontal">
+    android:fillViewport="true">
 
-    <!-- Título -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar Personal"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="40dp"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="32dp" />
-
-    <!-- Nombre -->
-    <EditText
-        android:id="@+id/etNombrePersonal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <!-- Correo -->
-    <EditText
-        android:id="@+id/etRut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="RUT"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="32dp"
+            android:text="Agregar Personal"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <!-- Direccion -->
-    <EditText
-        android:id="@+id/etDireccion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Direccion"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Nombre -->
+        <EditText
+            android:id="@+id/etNombrePersonal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nombre"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Correo -->
-    <EditText
-        android:id="@+id/etCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Correo"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Correo -->
+        <EditText
+            android:id="@+id/etRut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="RUT"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Correo -->
-    <EditText
-        android:id="@+id/etContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Direccion -->
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Direccion"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Rol -->
-    <EditText
-        android:id="@+id/etRol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Rol"
-        android:layout_marginBottom="16dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"/>
+        <!-- Correo -->
+        <EditText
+            android:id="@+id/etCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Correo"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <!-- Botón Guardar -->
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9055EA"
-        android:text="Ingresar Personal" />
+        <!-- Correo -->
+        <EditText
+            android:id="@+id/etContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Contraseña"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9055EA"
-        android:text="Volver" />
+        <!-- Rol -->
+        <EditText
+            android:id="@+id/etRol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Rol"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
-</LinearLayout>
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9055EA"
+            android:text="Ingresar Personal" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9055EA"
+            android:text="Volver" />
+
+    </LinearLayout>
+</ScrollView>
