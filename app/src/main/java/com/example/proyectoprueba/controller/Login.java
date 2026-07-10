@@ -121,11 +121,14 @@ public class Login extends AppCompatActivity {
                 intent = new Intent(this, menuAdmin.class);
                 break;
 
+            case "caja":
+                intent = new Intent(this, cajaRegistradora.class);
+                break;
+
             default:
                 intent = new Intent(this, menuUsuario.class);
                 break;
         }
-
         startActivity(intent);
         finish();
     }
