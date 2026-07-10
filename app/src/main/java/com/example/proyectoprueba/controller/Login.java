@@ -65,17 +65,10 @@ public class Login extends AppCompatActivity {
         auth.signInWithEmailAndPassword(correo, contraseña)
                 .addOnSuccessListener(authResult -> {
 
-                    db.collection("usuarios")
-                            .whereEqualTo("correo", correo)
-                            .limit(1)
-                            .get()
-                            .addOnSuccessListener(querySnapshot -> {
+                    db.collection("usuarios").whereEqualTo("correo", correo).limit(1).get().addOnSuccessListener(querySnapshot -> {
 
                                 if (!querySnapshot.isEmpty()) {
-
-                                    String rol = querySnapshot.getDocuments()
-                                            .get(0)
-                                            .getString("rol");
+                                    String rol = querySnapshot.getDocuments().get(0).getString("rol");
 
                                     if (rol == null) {
                                         mostrarError("Rol no definido");
@@ -89,13 +82,11 @@ public class Login extends AppCompatActivity {
                                 }
 
                             })
-                            .addOnFailureListener(e ->
-                                    mostrarError("Error Firestore: " + e.getMessage())
+                            .addOnFailureListener(e -> mostrarError("Error Firestore: " + e.getMessage())
                             );
 
                 })
-                .addOnFailureListener(e ->
-                        mostrarError("Error login: " + e.getMessage())
+                .addOnFailureListener(e -> mostrarError("Error login: " + e.getMessage())
                 );
     }
 
