@@ -49,9 +49,7 @@ public class agregarAlertas extends AppCompatActivity {
         btnEscanear = findViewById(R.id.btnEscanear);
 
         btnGuardar.setOnClickListener(v -> guardarAlerta());
-
-        btnEscanear.setOnClickListener(v ->
-                Toast.makeText(this, "Función en desarrollo", Toast.LENGTH_SHORT).show()
+        btnEscanear.setOnClickListener(v -> Toast.makeText(this, "Función en desarrollo", Toast.LENGTH_SHORT).show()
         );
 
         btnVolver.setOnClickListener(v -> finish());
@@ -96,7 +94,6 @@ public class agregarAlertas extends AppCompatActivity {
             }
 
             DocumentSnapshot productoDoc = queryDocumentSnapshots.getDocuments().get(0);
-
             String idProducto = productoDoc.getId();
 
             Map<String, Object> alerta = new HashMap<>();
