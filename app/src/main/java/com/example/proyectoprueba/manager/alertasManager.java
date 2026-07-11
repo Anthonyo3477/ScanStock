@@ -18,9 +18,8 @@ public class alertasManager {
     }
 
     //====================================
-    // MÉTODO PRINCIPAL
+    // Verifica los Productos
     //====================================
-
     public void verificarProducto(Producto producto) {
 
         if (producto == null || producto.getId() == null) {
@@ -33,7 +32,6 @@ public class alertasManager {
     //====================================
     // VERIFICAR BODEGA
     //====================================
-
     private void verificarBodega(Producto producto) {
 
         if (producto.getStockBodega() <= STOCK_CRITICO) {
@@ -56,7 +54,6 @@ public class alertasManager {
                             + ")";
 
             guardarAlertaSiNoExiste(producto,"Bodega", mensaje,"Baja");
-
         } else {
             resolverAlertas(producto, "Bodega");
         }
@@ -65,7 +62,6 @@ public class alertasManager {
     //====================================
     // VERIFICAR GÓNDOLA
     //====================================
-
     private void verificarGondola(Producto producto) {
 
         if (producto.getStockGondola() <= STOCK_CRITICO) {
@@ -114,7 +110,6 @@ public class alertasManager {
     //====================================
     // EVITAR ALERTAS DUPLICADAS
     //====================================
-
     private void guardarAlertaSiNoExiste(Producto producto, String tipo, String mensaje, String prioridad) {
         db.collection("alertas").whereEqualTo("idProducto", producto.getId()).whereEqualTo("tipo", tipo).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(query -> {
             if (query.isEmpty()) {
@@ -126,7 +121,6 @@ public class alertasManager {
     //====================================
     // RESOLVER ALERTAS
     //====================================
-
     private void resolverAlertas(Producto producto, String tipo) {
         db.collection("alertas").whereEqualTo("idProducto", producto.getId()).whereEqualTo("tipo", tipo).whereEqualTo("estado", "pendiente").get().addOnSuccessListener(query -> {
             for (var document : query.getDocuments()) {
