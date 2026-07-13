@@ -60,10 +60,24 @@
             android:layout_marginTop="16dp">
 
             <TextView
-                android:id="@+id/txtStock"
+                android:id="@+id/txtStockBodega"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stock Total: 0"
+                android:text="Stock Bodega: 0"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/txtStockGondola"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stock Gondola: 0"
                 android:textSize="16sp"/>
         </LinearLayout>
 
@@ -80,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="Editar"
                 app:icon="@drawable/icon_editar"
-                android:backgroundTint="#CCC100"
+                android:backgroundTint="#4CAF50"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton

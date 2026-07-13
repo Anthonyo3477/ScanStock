@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="Editar"
                 app:icon="@drawable/icon_editar"
-                android:backgroundTint="#CCC100"
+                android:backgroundTint="#4CAF50"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton

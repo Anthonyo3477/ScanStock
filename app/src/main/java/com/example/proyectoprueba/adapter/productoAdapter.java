@@ -52,7 +52,8 @@ public class productoAdapter extends RecyclerView.Adapter<productoAdapter.ViewHo
 
         holder.txtNombreProducto.setText(producto.getNombre());
         holder.txtCategoria.setText("Categoría: " + producto.getCategoria());
-        holder.txtStock.setText("Stock: " + producto.getStockGondola());
+        holder.txtStockBodega.setText("Stock Bodega: " + producto.getStockBodega());
+        holder.txtStockGondola.setText("Stock Gondola: " + producto.getStockGondola());
 
         // Botón Modificar
         holder.btnModificarProducto.setOnClickListener(v -> {
@@ -78,7 +79,7 @@ public class productoAdapter extends RecyclerView.Adapter<productoAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtNombreProducto, txtCategoria, txtStock;
+        TextView txtNombreProducto, txtCategoria, txtStockGondola, txtStockBodega;
         Button btnModificarProducto, btnEliminarProducto;
 
         public ViewHolder(@NonNull View itemView) {
@@ -86,7 +87,8 @@ public class productoAdapter extends RecyclerView.Adapter<productoAdapter.ViewHo
 
             txtNombreProducto = itemView.findViewById(R.id.txtNombreProducto);
             txtCategoria = itemView.findViewById(R.id.txtCategoria);
-            txtStock = itemView.findViewById(R.id.txtStock);
+            txtStockGondola = itemView.findViewById(R.id.txtStockGondola);
+            txtStockBodega = itemView.findViewById(R.id.txtStockBodega);
 
             btnModificarProducto = itemView.findViewById(R.id.btnModificarProducto);
             btnEliminarProducto = itemView.findViewById(R.id.btnEliminarProducto);
