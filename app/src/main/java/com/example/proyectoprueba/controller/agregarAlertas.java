@@ -11,6 +11,11 @@ import com.example.proyectoprueba.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.activity.result.ActivityResultLauncher;
+
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,10 +54,59 @@ public class agregarAlertas extends AppCompatActivity {
         btnEscanear = findViewById(R.id.btnEscanear);
 
         btnGuardar.setOnClickListener(v -> guardarAlerta());
-        btnEscanear.setOnClickListener(v -> Toast.makeText(this, "Función en desarrollo", Toast.LENGTH_SHORT).show()
-        );
+        btnEscanear.setOnClickListener(v -> iniciarEscaneo());
 
         btnVolver.setOnClickListener(v -> finish());
+    }
+
+    private void iniciarEscaneo(){
+
+        ScanOptions opciones = new ScanOptions();
+
+        opciones.setPrompt("Escane el codigo del preducto");
+        opciones.setBeepEnabled(true);
+        opciones.setOrientationLocked(false);
+
+        barcodeLauncher.launch(opciones);
+
+    }
+
+    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(), result ->{
+
+       if(result.getContents() != null){
+           buscarProducto(result.getContents());
+       }
+    });
+
+    private void buscarProducto( String codigo ){
+        long codigoBarras;
+
+        try{
+            codigoBarras = Long.parseLong(codigo);
+        }catch ( Exception e ) {
+            Toast.makeText(this, "Código inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        db.collection("producto").whereEqualTo("codigoBarras", codigoBarras).get().addOnSuccessListener(query -> {
+
+            if(query.isEmpty()) {
+                Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            DocumentSnapshot doc = query.getDocuments().get(0);
+
+            etNombre.setText(doc.getString("nombre"));
+            etCategoria.setText(doc.getString("categoria"));
+            etCodigoBarras.setText(String.valueOf(codigoBarras));
+
+            Long stockBodega = doc.getLong("stockBodega");
+            Long stockGondola = doc.getLong("stockGondola");
+
+            etStockBodega.setText(String.valueOf(stockBodega != null ? stockBodega : 0 ));
+            etStockGondola.setText(String.valueOf(stockGondola != null ? stockGondola : 0));
+
+        }).addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show());
     }
 
     private void guardarAlerta() {

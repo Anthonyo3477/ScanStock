@@ -14,20 +14,20 @@ import com.example.proyectoprueba.model.Producto;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.activity.result.ActivityResultLauncher;
+
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class reponerProducto extends AppCompatActivity {
 
-    private EditText etCodigoBarras;
-    private EditText etCantidadRepuesta;
-
+    private EditText etCodigoBarras, etCantidadRepuesta;
     private RadioGroup radioGroupDestino;
-    private RadioButton rbBodega;
-    private RadioButton rbGondola;
-
-    private Button btnConfirmar;
-    private Button btnVolver;
+    private RadioButton rbBodega, rbGondola;
+    private Button btnConfirmar, btnVolver, btnEscanear;
 
     private FirebaseFirestore db;
 
@@ -48,10 +48,29 @@ public class reponerProducto extends AppCompatActivity {
 
         btnConfirmar = findViewById(R.id.btnConfirmar);
         btnVolver = findViewById(R.id.btnVolver);
+        btnEscanear = findViewById(R.id.btnEscanear);
 
         btnConfirmar.setOnClickListener(v -> validarDatos());
         btnVolver.setOnClickListener(v -> finish());
+        btnEscanear.setOnClickListener( v -> iniciarEscaneo());
     }
+
+    private void iniciarEscaneo() {
+
+        ScanOptions opciones = new ScanOptions();
+
+        opciones.setPrompt("Escanee el código del producto");
+        opciones.setBeepEnabled(true);
+        opciones.setOrientationLocked(false);
+
+        barcodeLauncher.launch(opciones);
+    }
+
+    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(), result -> {
+        if (result.getContents() != null) {
+            etCodigoBarras.setText(result.getContents());
+        }
+    });
 
     private void validarDatos() {
 
@@ -122,14 +141,12 @@ public class reponerProducto extends AppCompatActivity {
 
                 actualizacion.put("stockBodega", producto.getStockBodega() - cantidad);
                 actualizacion.put("stockGondola", producto.getStockGondola() + cantidad);
-
             }
 
             doc.getReference().update(actualizacion).addOnSuccessListener(aVoid -> {
 
                 resolverAlerta(producto.getCodigoBarras());
                 Toast.makeText(this, "Producto reponido correctamente", Toast.LENGTH_SHORT).show();
-
                 finish();
 
             }).addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());

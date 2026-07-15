@@ -13,7 +13,6 @@
         android:padding="16dp">
 
         <!-- Título -->
-
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
@@ -28,14 +27,11 @@
         <!-- ========================= -->
         <!-- FILA 1 -->
         <!-- ========================= -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="30dp">
-
-            <!-- Panadería -->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -58,10 +54,7 @@
                     android:text="Panadería"
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="8dp"/>
-
             </LinearLayout>
-
-            <!-- Abarrotes -->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -84,10 +77,7 @@
                     android:text="Abarrotes"
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="8dp"/>
-
             </LinearLayout>
-
-            <!-- Lácteos -->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -112,13 +102,11 @@
                     android:layout_marginTop="8dp"/>
 
             </LinearLayout>
-
         </LinearLayout>
 
         <!-- ========================= -->
         <!-- FILA 2 -->
         <!-- ========================= -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -196,13 +184,11 @@
                     android:layout_marginTop="8dp"/>
 
             </LinearLayout>
-
         </LinearLayout>
 
         <!-- ========================= -->
         <!-- FILA 3 -->
         <!-- ========================= -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -229,7 +215,6 @@
                     android:text="Bebé"
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="8dp"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -253,7 +238,6 @@
                     android:text="Mascota"
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="8dp"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -282,7 +266,6 @@
         </LinearLayout>
 
         <!-- Botón volver -->
-
         <Button
             android:id="@+id/btnVolver"
             android:layout_width="200dp"
