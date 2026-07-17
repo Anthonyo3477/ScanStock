@@ -73,7 +73,6 @@ public class cajaRegistradora extends AppCompatActivity {
         if (result.getContents() != null) {
             buscarProducto(result.getContents());
         }
-
     });
 
     private void buscarProducto(String codigo) {
