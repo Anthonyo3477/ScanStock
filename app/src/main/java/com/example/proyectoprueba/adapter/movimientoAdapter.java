@@ -17,9 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class movimientoAdapter
-        extends RecyclerView.Adapter<movimientoAdapter.MovimientoViewHolder> {
-
+public class movimientoAdapter extends RecyclerView.Adapter<movimientoAdapter.MovimientoViewHolder> {
     private final Context context;
     private final List<Movimiento> listaMovimientos;
 
@@ -39,7 +37,7 @@ public class movimientoAdapter
     public void onBindViewHolder(@NonNull MovimientoViewHolder holder, int position) {
 
         Movimiento movimiento = listaMovimientos.get(position);
-        holder.txtNombreProducto.setText("Producto: " + movimiento.getNombreProducto());
+        holder.txtProducto.setText("Producto: " + movimiento.getNombreProducto());
         holder.txtUsuario.setText("Usuario: " + movimiento.getUsuario());
         holder.txtAccion.setText("Acción: " + movimiento.getAccion());
         holder.txtDestino.setText("Destino: " + movimiento.getDestino());
@@ -61,11 +59,11 @@ public class movimientoAdapter
     }
 
     public static class MovimientoViewHolder extends RecyclerView.ViewHolder {
-        TextView txtNombreProducto, txtUsuario, txtAccion, txtDestino, txtCantidad, txtStock, txtFecha;
+        TextView txtProducto, txtUsuario, txtAccion, txtDestino, txtCantidad, txtStock, txtFecha;
 
         public MovimientoViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtNombreProducto = itemView.findViewById(R.id.txtNombreProducto);
+            txtProducto = itemView.findViewById(R.id.txtProducto);
             txtUsuario = itemView.findViewById(R.id.txtUsuario);
             txtAccion = itemView.findViewById(R.id.txtAccion);
             txtDestino = itemView.findViewById(R.id.txtDestino);

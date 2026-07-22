@@ -45,6 +45,7 @@
         <activity android:name=".controller.reponerProducto" />
         <activity android:name=".controller.HistorialAlertas" />
         <activity android:name=".controller.cajaRegistradora" />
+        <activity android:name=".controller.Movimientos" />
 
     </application>
 </manifest>

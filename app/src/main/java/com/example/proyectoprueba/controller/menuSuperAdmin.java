@@ -9,10 +9,11 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.model.Movimiento;
 
 public class menuSuperAdmin extends AppCompatActivity {
 
-    private CardView cardAlertas, cardHistorial, cardAvisos, cardPersonal, cardUsuarios, cardReportes;
+    private CardView cardAlertas, cardHistorial, cardAvisos, cardPersonal, cardUsuarios, cardReportes, cardMovimientos;
     private Button btnVolver;
     private ProgressBar progressMenu;
 
@@ -28,29 +29,25 @@ public class menuSuperAdmin extends AppCompatActivity {
         cardPersonal = findViewById(R.id.cardPersonal);
         cardUsuarios = findViewById(R.id.cardUsuarios);
         cardReportes = findViewById(R.id.cardReportes);
+        cardMovimientos = findViewById(R.id.cardMovimientos);
 
         btnVolver = findViewById(R.id.btnVolver);
         progressMenu = findViewById(R.id.progress_menu);
 
         // Alertas
-        cardAlertas.setOnClickListener(v -> navegar(new Intent(this, Notificaciones.class))
-        );
+        cardAlertas.setOnClickListener(v -> navegar(new Intent(this, Notificaciones.class)));
 
         // Historial
-        cardHistorial.setOnClickListener(v -> navegar(new Intent(this, HistorialAlertas.class))
-        );
+        cardHistorial.setOnClickListener(v -> navegar(new Intent(this, HistorialAlertas.class)));
 
         // Agregar Aviso
-        cardAvisos.setOnClickListener(v -> navegar(new Intent(this, agregarAlertas.class))
-        );
+        cardAvisos.setOnClickListener(v -> navegar(new Intent(this, agregarAlertas.class)));
 
         // Agregar Personal
-        cardPersonal.setOnClickListener(v -> navegar(new Intent(this, registrarPersonal.class))
-        );
+        cardPersonal.setOnClickListener(v -> navegar(new Intent(this, registrarPersonal.class)));
 
         // Listar Usuarios
-        cardUsuarios.setOnClickListener(v -> navegar(new Intent(this, listarUsuarios.class))
-        );
+        cardUsuarios.setOnClickListener(v -> navegar(new Intent(this, listarUsuarios.class)));
 
         // Reportes
         cardReportes.setOnClickListener(v -> {
@@ -59,6 +56,12 @@ public class menuSuperAdmin extends AppCompatActivity {
             // navegar(new Intent(this, GenerarReporte.class));
 
         });
+
+        // Movimientos
+        // (LA ventana de movimientos es mas que nada un historial, pero este historial es mas generalizado, aca van aparecer las cosas que hacen tanto las cajas,
+        // como los de reponedores, en pocas palabras es un historial pero mas generalizado)
+        cardMovimientos.setOnClickListener( v-> navegar(new Intent(this, Movimientos.class)));
+
         btnVolver.setOnClickListener(v -> finish());
     }
 
@@ -72,6 +75,7 @@ public class menuSuperAdmin extends AppCompatActivity {
         cardPersonal.setEnabled(false);
         cardUsuarios.setEnabled(false);
         cardReportes.setEnabled(false);
+        cardMovimientos.setEnabled(false);
 
         btnVolver.setEnabled(false);
 
@@ -90,6 +94,7 @@ public class menuSuperAdmin extends AppCompatActivity {
         cardPersonal.setEnabled(true);
         cardUsuarios.setEnabled(true);
         cardReportes.setEnabled(true);
+        cardMovimientos.setEnabled(true);
 
         btnVolver.setEnabled(true);
     }
