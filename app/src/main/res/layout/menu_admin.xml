@@ -12,7 +12,6 @@
         android:padding="20dp">
 
         <!-- Título -->
-
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"

@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.manager.movimientoManager;
 import com.example.proyectoprueba.model.Producto;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +31,8 @@ public class cajaRegistradora extends AppCompatActivity {
     private FirebaseFirestore db;
     private alertasManager manager;
     private ProgressBar progressLogin;
+
+    private movimientoManager movimientoManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class cajaRegistradora extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         manager = new alertasManager();
+        movimientoManager = new movimientoManager();
 
         btnEscanear.setOnClickListener(v -> iniciarEscaneo());
         btnVender.setOnClickListener(v -> venderProducto());
@@ -117,6 +121,7 @@ public class cajaRegistradora extends AppCompatActivity {
     }
 
     private void venderProducto() {
+
         if (productoActual == null) {
             Toast.makeText(this, "Primero escanee un producto", Toast.LENGTH_SHORT).show();
             return;
@@ -129,26 +134,48 @@ public class cajaRegistradora extends AppCompatActivity {
             return;
         }
 
-        int cantidadVenta = Integer.parseInt(cantidadTexto);
+        int cantidad;
+        try {
+            cantidad = Integer.parseInt(cantidadTexto);
 
-        if (cantidadVenta <= 0) {
-            Toast.makeText(this, "Cantidad inválida", Toast.LENGTH_SHORT).show();
+        } catch (NumberFormatException e) {
+            etCantidadVenta.setError("Ingrese un número válido");
             return;
         }
 
-        if (productoActual.getStockGondola() < cantidadVenta) {
+        if (cantidad <= 0) {
+            Toast.makeText(this, "La cantidad debe ser mayor que cero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int stockAntes = productoActual.getStockGondola();
+        if (stockAntes < cantidad) {
             Toast.makeText(this, "No hay suficiente stock en góndola", Toast.LENGTH_LONG).show();
             return;
         }
 
-        int nuevoStock = productoActual.getStockGondola() - cantidadVenta;
+        int nuevoStock = stockAntes - cantidad;
 
-        documentoActual.getReference().update("stockGondola", nuevoStock).addOnSuccessListener(unused -> {
-            productoActual.setStockGondola(nuevoStock);
+        // Variables finales para utilizarlas dentro del callback
+        final int cantidadVenta = cantidad;
+        final int stockAnterior = stockAntes;
+        final int stockFinal = nuevoStock;
+
+        documentoActual.getReference().update("stockGondola", stockFinal).addOnSuccessListener(unused -> {
+            productoActual.setStockGondola(stockFinal);
             manager.verificarProducto(productoActual);
-            Toast.makeText(this, "Venta realizada correctamente", Toast.LENGTH_SHORT).show();
+            String usuario = "Usuario desconocido";
 
+            if (auth.getCurrentUser() != null) {
+                usuario = auth.getCurrentUser().getEmail();
+            }
+
+            movimientoManager.registrarMovimiento(productoActual.getId(), productoActual.getNombre(), usuario, "Venta", "Gondola", cantidadVenta, stockAnterior, stockFinal);
+            Toast.makeText(this, "Venta realizada correctamente", Toast.LENGTH_SHORT).show();
             limpiarPantalla();
+
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Error al realizar la venta: " + e.getMessage(), Toast.LENGTH_LONG).show();
         });
     }
 
