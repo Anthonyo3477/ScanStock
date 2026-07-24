@@ -46,6 +46,7 @@
         <activity android:name=".controller.HistorialAlertas" />
         <activity android:name=".controller.cajaRegistradora" />
         <activity android:name=".controller.Movimientos" />
+        <activity android:name=".controller.reportesProductos" />
 
     </application>
 </manifest>

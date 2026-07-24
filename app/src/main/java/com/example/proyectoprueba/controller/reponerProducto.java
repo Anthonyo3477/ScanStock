@@ -15,8 +15,10 @@ import com.example.proyectoprueba.manager.alertasManager;
 import com.example.proyectoprueba.model.Producto;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+import com.example.proyectoprueba.manager.movimientoManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +31,9 @@ public class reponerProducto extends AppCompatActivity {
     private Button btnVolver, btnConfirmar, btnEscanear;
 
     private FirebaseFirestore db;
+    private FirebaseAuth auth;
     private alertasManager manager;
+    private movimientoManager movimientoManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,9 @@ public class reponerProducto extends AppCompatActivity {
 
         setContentView(R.layout.reponer_producto);
         db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
         manager = new alertasManager();
+        movimientoManager = new movimientoManager();
         etCodigoBarras = findViewById(R.id.etCodigoBarras);
         etCantidadRepuesta = findViewById(R.id.etCantidadRepuesta);
 
@@ -181,8 +187,31 @@ public class reponerProducto extends AppCompatActivity {
 
                 producto.setStockBodega(stockBodegaFinal);
                 producto.setStockGondola(stockGondolaFinal);
-
                 manager.verificarProducto(producto);
+
+                String usuario = "Usuario Desconocido";
+
+                if (auth.getCurrentUser() != null){
+                    usuario = auth.getCurrentUser().getEmail();
+
+                    int stockAntes;
+                    int stockDespues;
+                    String accion;
+
+                    if( destino.equals("Bodega")){
+
+                        stockAntes = stockBodegaActual;
+                        stockDespues = stockBodegaFinal;
+                        accion = "Reposición en Bodega";
+
+                    }else{
+                        stockAntes = stockGondolaActual;
+                        stockDespues = stockGondolaFinal;
+                        accion = "Reposición en Góndola";
+                    }
+
+                    movimientoManager.registrarMovimiento(producto.getId(), producto.getNombre(), usuario, accion, destino, cantidad, stockAntes, stockDespues);
+                }
                 Toast.makeText(this, "Producto repuesto correctamente", Toast.LENGTH_SHORT).show();
 
                 finish();
