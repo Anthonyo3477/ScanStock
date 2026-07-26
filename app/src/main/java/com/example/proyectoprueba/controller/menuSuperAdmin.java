@@ -50,16 +50,9 @@ public class menuSuperAdmin extends AppCompatActivity {
         cardUsuarios.setOnClickListener(v -> navegar(new Intent(this, listarUsuarios.class)));
 
         // Reportes
-        cardReportes.setOnClickListener(v -> {
-
-            // Cuando tengas creada la Activity:
-            // navegar(new Intent(this, GenerarReporte.class));
-
-        });
+        cardReportes.setOnClickListener(v -> navegar(new Intent(this, reportesProductos.class)));
 
         // Movimientos
-        // (LA ventana de movimientos es mas que nada un historial, pero este historial es mas generalizado, aca van aparecer las cosas que hacen tanto las cajas,
-        // como los de reponedores, en pocas palabras es un historial pero mas generalizado)
         cardMovimientos.setOnClickListener( v-> navegar(new Intent(this, Movimientos.class)));
 
         btnVolver.setOnClickListener(v -> finish());
