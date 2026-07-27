@@ -127,95 +127,86 @@ public class reportesProductos extends AppCompatActivity {
     private void generarExcel(Uri uri) {
 
         Workbook workbook = null;
-        OutputStream outputStream = null;
 
         try {
 
             workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Productos por Pedir");
 
-            // ====================================================
-            // Encabezado
-            // ====================================================
-
             Row encabezado = sheet.createRow(0);
             crearCelda(encabezado, 0, "ESTADO");
             crearCelda(encabezado, 1, "PRODUCTO");
             crearCelda(encabezado, 2, "MARCA");
-            crearCelda(encabezado, 3, "CATEGORÍA");
-            crearCelda(encabezado, 4, "CÓDIGO DE BARRAS");
+            crearCelda(encabezado, 3, "CATEGORIA");
+            crearCelda(encabezado, 4, "CODIGO DE BARRAS");
             crearCelda(encabezado, 5, "STOCK BODEGA");
-            crearCelda(encabezado, 6, "STOCK GÓNDOLA");
+            crearCelda(encabezado, 6, "STOCK GONDOLA");
             crearCelda(encabezado, 7, "STOCK TOTAL");
 
-            int filaActual = 1;
-
-            // ====================================================
-            // PRODUCTOS
-            // ====================================================
+            int fila = 1;
 
             for (Producto producto : listaProductosReportes) {
+
                 int stockBodega = producto.getStockBodega();
                 int stockGondola = producto.getStockGondola();
                 int stockTotal = stockBodega + stockGondola;
 
                 String estado;
 
-                if (stockTotal <= 5) {estado = "CRÍTICO";
-
+                if (stockTotal <= 5) {
+                    estado = "CRITICO";
                 } else {
                     estado = "BAJO";
                 }
 
-                Row fila = sheet.createRow(filaActual++);
+                Row row = sheet.createRow(fila++);
 
-                crearCelda(fila, 0, estado);
-                crearCelda(fila, 1, producto.getNombre());
-                crearCelda(fila, 2, producto.getMarca());
-                crearCelda(fila, 3, producto.getCategoria());
-                crearCelda(fila, 4, String.valueOf(producto.getCodigoBarras()));
-                crearCelda(fila, 5, String.valueOf(stockBodega));
-                crearCelda(fila, 6, String.valueOf(stockGondola));
-                crearCelda(fila, 7, String.valueOf(stockTotal));
+                crearCelda(row, 0, estado);
+                crearCelda(row, 1, producto.getNombre());
+                crearCelda(row, 2, producto.getMarca());
+                crearCelda(row, 3, producto.getCategoria());
+                crearCelda(row, 4, String.valueOf(producto.getCodigoBarras()));
+                crearCelda(row, 5, String.valueOf(stockBodega));
+                crearCelda(row, 6, String.valueOf(stockGondola));
+                crearCelda(row, 7, String.valueOf(stockTotal));
             }
 
-            // ====================================================
-            // Ancho de las Columnas
-            // ====================================================
+            // Ancho manual de columnas
+            sheet.setColumnWidth(0, 15 * 256);
+            sheet.setColumnWidth(1, 25 * 256);
+            sheet.setColumnWidth(2, 20 * 256);
+            sheet.setColumnWidth(3, 20 * 256);
+            sheet.setColumnWidth(4, 20 * 256);
+            sheet.setColumnWidth(5, 15 * 256);
+            sheet.setColumnWidth(6, 15 * 256);
+            sheet.setColumnWidth(7, 15 * 256);
 
-            for (int i = 0; i < 8; i++) {
-                sheet.autoSizeColumn(i);
-            }
+            OutputStream outputStream = getContentResolver().openOutputStream(uri);
 
-            // ====================================================
-            // Guardar Archivo Excel
-            // ====================================================
-
-            outputStream = getContentResolver().openOutputStream(uri);
             if (outputStream == null) {
-                Toast.makeText(this, "No se pudo crear el archivo", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No se pudo abrir el archivo", Toast.LENGTH_LONG).show();
                 return;
             }
 
             workbook.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+
             Toast.makeText(this, "Excel generado correctamente", Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             Toast.makeText(this, "Error al generar Excel: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
             e.printStackTrace();
 
         } finally {
-            try {
-                if (outputStream != null) {
-                    outputStream.close();
-                }
 
-                if (workbook != null) {
+            if (workbook != null) {
+                try {
                     workbook.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
