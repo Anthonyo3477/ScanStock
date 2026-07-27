@@ -3,11 +3,13 @@ package com.example.proyectoprueba.controller;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.manager.ProgressManager;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -17,11 +19,13 @@ public class modificarUsuario extends AppCompatActivity {
 
     private EditText etNombre, etRut, etDireccion, etCorreo, etRol;
     private Button btnActualizar, btnVolver;
+    private ProgressBar progressMenu;
+    private ProgressManager progressManager;
     private FirebaseFirestore db;
     private String idUsuario;
 
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.modificar_usuario);
 
@@ -34,10 +38,12 @@ public class modificarUsuario extends AppCompatActivity {
         btnActualizar = findViewById(R.id.btnActualizar);
         btnVolver = findViewById(R.id.btnVolver);
 
+        progressMenu = findViewById(R.id.progress_menu);
+        progressManager = new ProgressManager(progressMenu, btnActualizar, btnVolver, etNombre, etRut, etDireccion, etCorreo, etRol);
+
         db = FirebaseFirestore.getInstance();
 
         idUsuario = getIntent().getStringExtra("idUsuario");
-
         etNombre.setText(getIntent().getStringExtra("nombre"));
         etRut.setText(getIntent().getStringExtra("rut"));
         etDireccion.setText(getIntent().getStringExtra("direccion"));
@@ -47,7 +53,11 @@ public class modificarUsuario extends AppCompatActivity {
         btnActualizar.setOnClickListener(v -> actualizarUsuario());
         btnVolver.setOnClickListener(v -> finish());
     }
+
     private void actualizarUsuario() {
+
+        progressManager.mostrar();
+
         String nombre = etNombre.getText().toString().trim();
         String rut = etRut.getText().toString().trim();
         String direccion = etDireccion.getText().toString().trim();
@@ -55,25 +65,26 @@ public class modificarUsuario extends AppCompatActivity {
         String rol = etRol.getText().toString().trim();
 
         if (nombre.isEmpty() || rut.isEmpty() || direccion.isEmpty() || correo.isEmpty() || rol.isEmpty()) {
+            progressManager.ocultar();
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         Map<String, Object> datosActualizados = new HashMap<>();
+
         datosActualizados.put("nombre", nombre);
         datosActualizados.put("rut", rut);
         datosActualizados.put("direccion", direccion);
         datosActualizados.put("correo", correo);
         datosActualizados.put("rol", rol);
 
-        db.collection("usuarios").document(idUsuario).update(datosActualizados)
-                .addOnSuccessListener(unused -> {
-                    Toast.makeText(this, "Usuario actualizado", Toast.LENGTH_SHORT).show();
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                });
-
-        }
+        db.collection("usuarios").document(idUsuario).update(datosActualizados).addOnSuccessListener(unused -> {
+            progressManager.ocultar();
+            Toast.makeText(this, "Usuario actualizado", Toast.LENGTH_SHORT).show();
+            finish();
+        }).addOnFailureListener(e -> {
+            progressManager.ocultar();
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        });
     }
+}

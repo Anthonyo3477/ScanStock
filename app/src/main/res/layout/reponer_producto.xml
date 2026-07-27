@@ -20,6 +20,13 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
+        <ProgressBar
+            android:id="@+id/progress_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <EditText
             android:id="@+id/etCodigoBarras"
             android:layout_width="match_parent"

@@ -24,6 +24,13 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <ProgressBar
+            android:id="@+id/progress_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <!-- Nombre -->
         <EditText
             android:id="@+id/etNombre"
@@ -134,5 +141,4 @@
             android:text="Volver" />
 
     </LinearLayout>
-
 </ScrollView>

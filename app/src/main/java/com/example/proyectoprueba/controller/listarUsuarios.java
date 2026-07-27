@@ -3,6 +3,7 @@ package com.example.proyectoprueba.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectoprueba.R;
 import com.example.proyectoprueba.adapter.personalAdapter;
+import com.example.proyectoprueba.manager.ProgressManager;
 import com.example.proyectoprueba.model.Usuario;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,23 +26,23 @@ public class listarUsuarios extends AppCompatActivity {
     private List<Usuario> listaPersonal;
     private FirebaseFirestore db;
     private RecyclerView recyclerPersonal;
+    private Button btnVolver;
+    private ProgressBar progressMenu;
+    private ProgressManager progressManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_usuarios);
 
-        // Botones
-        Button btnVolver = findViewById(R.id.btnVolver);
-
-        // RecyclerView
+        btnVolver = findViewById(R.id.btnVolver);
         recyclerPersonal = findViewById(R.id.recyclerPersonal);
+
+        progressMenu = findViewById(R.id.progress_menu);
+        progressManager = new ProgressManager(progressMenu, btnVolver, recyclerPersonal);
+
         recyclerPersonal.setLayoutManager(new LinearLayoutManager(this));
-
-        // Lista
         listaPersonal = new ArrayList<>();
-
-        // Adapter con listener
         adapter = new personalAdapter(listaPersonal, usuario -> {
 
             Intent intent = new Intent(listarUsuarios.this, modificarUsuario.class);
@@ -53,19 +55,20 @@ public class listarUsuarios extends AppCompatActivity {
             intent.putExtra("rol", usuario.getRol());
 
             startActivity(intent);
-        },
-                // Eliminar
-                usuario -> {
-                    db.collection("usuarios").document(usuario.getId()).delete().addOnSuccessListener(unused -> {
-                        Toast.makeText(this, "Personal eliminado correctamente", Toast.LENGTH_SHORT).show();
 
-                        cargarPersonal();
-                    }).addOnFailureListener(e -> {
-                        Toast.makeText(this, "Error al eliminar el personal", Toast.LENGTH_SHORT).show();
-                    });
-                }
-        );
+        }, usuario -> {
 
+            progressManager.mostrar();
+
+            db.collection("usuarios").document(usuario.getId()).delete().addOnSuccessListener(unused -> {
+                Toast.makeText(this, "Personal eliminado correctamente", Toast.LENGTH_SHORT).show();
+                cargarPersonal();
+
+            }).addOnFailureListener(e -> {
+                progressManager.ocultar();
+                Toast.makeText(this, "Error al eliminar el personal", Toast.LENGTH_SHORT).show();
+            });
+        });
 
         recyclerPersonal.setAdapter(adapter);
         db = FirebaseFirestore.getInstance();
@@ -75,25 +78,29 @@ public class listarUsuarios extends AppCompatActivity {
 
     private void cargarPersonal() {
 
-        db.collection("usuarios")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+        progressManager.mostrar();
+        db.collection("usuarios").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            listaPersonal.clear();
+            for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                Usuario usuario = doc.toObject(Usuario.class);
+                if (usuario != null) {
+                    usuario.setId(doc.getId());
+                    listaPersonal.add(usuario);
+                }
+            }
 
-                    listaPersonal.clear();
+            adapter.notifyDataSetChanged();
+            progressManager.ocultar();
 
-                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                        Usuario usuario = doc.toObject(Usuario.class);
+        }).addOnFailureListener(e -> {
+            progressManager.ocultar();
+            Toast.makeText(this, "Error al cargar los usuarios", Toast.LENGTH_SHORT).show();
+        });
+    }
 
-                        if (usuario != null) {
-                            usuario.setId(doc.getId());
-                            listaPersonal.add(usuario);
-                        }
-                    }
-
-                    adapter.notifyDataSetChanged();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error al cargar los usuarios", Toast.LENGTH_SHORT).show();
-                });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarPersonal();
     }
 }

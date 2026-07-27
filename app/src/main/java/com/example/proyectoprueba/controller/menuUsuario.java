@@ -13,8 +13,7 @@ import com.example.proyectoprueba.R;
 
 public class menuUsuario extends AppCompatActivity {
 
-    private CardView cardNuevoAviso;
-    private CardView cardAlertas;
+    private CardView cardNuevoAviso, cardAlertas, cardListarProductos;
     private Button btnVolver;
     private ProgressBar progressMenu;
 
@@ -25,6 +24,7 @@ public class menuUsuario extends AppCompatActivity {
 
         cardNuevoAviso = findViewById(R.id.cardNuevoAviso);
         cardAlertas = findViewById(R.id.cardAlertas);
+        cardListarProductos = findViewById(R.id.cardListarProductos);
         btnVolver = findViewById(R.id.btnVolver);
         progressMenu = findViewById(R.id.progress_menu);
 
@@ -38,6 +38,10 @@ public class menuUsuario extends AppCompatActivity {
             navegar(new Intent(this, Notificaciones.class));
         });
 
+        cardListarProductos.setOnClickListener( v ->{
+            navegar(new Intent(this, categoriaProductos.class));
+        });
+
         // Volver
         btnVolver.setOnClickListener(v -> finish());
     }
@@ -48,6 +52,7 @@ public class menuUsuario extends AppCompatActivity {
 
         cardNuevoAviso.setEnabled(false);
         cardAlertas.setEnabled(false);
+        cardListarProductos.setEnabled(false);
         btnVolver.setEnabled(false);
         startActivity(intent);
     }
@@ -60,6 +65,7 @@ public class menuUsuario extends AppCompatActivity {
 
         cardNuevoAviso.setEnabled(true);
         cardAlertas.setEnabled(true);
+        cardListarProductos.setEnabled(true);
         btnVolver.setEnabled(true);
     }
 }

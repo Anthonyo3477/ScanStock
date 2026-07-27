@@ -3,11 +3,13 @@ package com.example.proyectoprueba.controller;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
+import com.example.proyectoprueba.manager.ProgressManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -18,6 +20,8 @@ public class registrarPersonal extends AppCompatActivity {
 
     private EditText etNombrePersonal, etRut, etDireccion, etCorreo, etContraseña, etRol;
     private Button btnGuardar, btnVolver;
+    private ProgressBar progressMenu;
+    private ProgressManager progressManager;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -39,6 +43,10 @@ public class registrarPersonal extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         btnVolver = findViewById(R.id.btnVolver);
 
+        // ProgressBar
+        progressMenu = findViewById(R.id.progress_menu);
+        progressManager = new ProgressManager(progressMenu, btnGuardar, btnVolver, etNombrePersonal, etRut, etDireccion, etCorreo, etContraseña, etRol);
+
         // Firebase
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -49,6 +57,8 @@ public class registrarPersonal extends AppCompatActivity {
 
     private void registrarPersonal() {
 
+        progressManager.mostrar();
+
         String nombre = etNombrePersonal.getText().toString().trim();
         String rut = etRut.getText().toString().trim();
         String direccion = etDireccion.getText().toString().trim();
@@ -57,38 +67,33 @@ public class registrarPersonal extends AppCompatActivity {
         String rol = etRol.getText().toString().trim().toLowerCase();
 
         if (nombre.isEmpty() || rut.isEmpty() || direccion.isEmpty() || correo.isEmpty() || contraseña.isEmpty() || rol.isEmpty()) {
-
+            progressManager.ocultar();
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Crear usuario en AUTH
-        auth.createUserWithEmailAndPassword(correo, contraseña)
-                .addOnSuccessListener(authResult -> {
+        auth.createUserWithEmailAndPassword(correo, contraseña).addOnSuccessListener(authResult -> {
 
-                    String uid = authResult.getUser().getUid();
+            String uid = authResult.getUser().getUid();
+            Map<String, Object> usuario = new HashMap<>();
+            usuario.put("nombre", nombre);
+            usuario.put("rut", rut);
+            usuario.put("direccion", direccion);
+            usuario.put("correo", correo);
+            usuario.put("rol", rol);
 
-                    Map<String, Object> usuario = new HashMap<>();
-                    usuario.put("nombre", nombre);
-                    usuario.put("rut", rut);
-                    usuario.put("direccion", direccion);
-                    usuario.put("correo", correo);
-                    usuario.put("rol", rol);
+            db.collection("usuarios").document(uid).set(usuario).addOnSuccessListener(unused -> {
+                progressManager.ocultar();
+                Toast.makeText(this, "Personal registrado correctamente", Toast.LENGTH_LONG).show();
+                finish();
 
-                    // Guardar en Firestore con el MISMO UID
-                    db.collection("usuarios").document(uid)
-                            .set(usuario)
-                            .addOnSuccessListener(unused -> {
-                                Toast.makeText(this, "Personal registrado correctamente", Toast.LENGTH_LONG).show();
-                                finish();
-                            })
-                            .addOnFailureListener(e ->
-                                    Toast.makeText(this, "Error Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show()
-                            );
-
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error Auth: " + e.getMessage(), Toast.LENGTH_LONG).show()
-                );
+            }).addOnFailureListener(e -> {
+                progressManager.ocultar();
+                Toast.makeText(this, "Error Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            });
+        }).addOnFailureListener(e -> {
+            progressManager.ocultar();
+            Toast.makeText(this, "Error Auth: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        });
     }
 }
