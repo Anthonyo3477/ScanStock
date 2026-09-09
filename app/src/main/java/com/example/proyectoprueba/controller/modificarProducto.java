@@ -63,9 +63,15 @@ public class modificarProducto extends AppCompatActivity {
         etStockBodega.setText(String.valueOf(stockBodega));
         etStockGondola.setText(String.valueOf(stockGondola));
 
+        //Botones
         btnActualizar.setOnClickListener(v -> actualizarProducto());
-
         btnVolver.setOnClickListener(v -> finish());
+
+        // Campos que no se pueden editar
+        etCodigoBarras.setEnabled(false);
+        etCategoria.setEnabled(false);
+        etFechaCaducidad.setEnabled(false);
+
     }
 
     private void actualizarProducto() {
@@ -74,24 +80,24 @@ public class modificarProducto extends AppCompatActivity {
 
         String nombre = etNombreProducto.getText().toString().trim();
         String marca = etMarca.getText().toString().trim();
-        String categoria = etCategoria.getText().toString().trim();
-        String fechaCaducidad = etFechaCaducidad.getText().toString().trim();
+        //String categoria = etCategoria.getText().toString().trim();
+        //String fechaCaducidad = etFechaCaducidad.getText().toString().trim();
 
-        if (nombre.isEmpty() || marca.isEmpty() || categoria.isEmpty() || fechaCaducidad.isEmpty() || etCodigoBarras.getText().toString().trim().isEmpty() ||
-                etCantidad.getText().toString().trim().isEmpty() || etStockBodega.getText().toString().trim().isEmpty() || etStockGondola.getText().toString().trim().isEmpty()) {
+        if (nombre.isEmpty() || marca.isEmpty() || etCantidad.getText().toString().trim().isEmpty() || etStockBodega.getText().toString().trim().isEmpty() ||
+            etStockGondola.getText().toString().trim().isEmpty()) {
             progressManager.ocultar();
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        long codigoBarras;
+        //long codigoBarras;
         int cantidad;
         int stockBodega;
         int stockGondola;
 
         try {
 
-            codigoBarras = Long.parseLong(etCodigoBarras.getText().toString().trim());
+            //codigoBarras = Long.parseLong(etCodigoBarras.getText().toString().trim());
             cantidad = Integer.parseInt(etCantidad.getText().toString().trim());
             stockBodega = Integer.parseInt(etStockBodega.getText().toString().trim());
             stockGondola = Integer.parseInt(etStockGondola.getText().toString().trim());
@@ -107,10 +113,10 @@ public class modificarProducto extends AppCompatActivity {
 
         productoActualizado.put("nombre", nombre);
         productoActualizado.put("marca", marca);
-        productoActualizado.put("categoria", categoria);
-        productoActualizado.put("fechaCaducidad", fechaCaducidad);
+        //productoActualizado.put("categoria", categoria);
+        //productoActualizado.put("fechaCaducidad", fechaCaducidad);
 
-        productoActualizado.put("codigoBarras", codigoBarras);
+        //productoActualizado.put("codigoBarras", codigoBarras);
         productoActualizado.put("cantidad", cantidad);
         productoActualizado.put("stockBodega", stockBodega);
         productoActualizado.put("stockGondola", stockGondola);

@@ -55,7 +55,6 @@ public class reportesProductos extends AppCompatActivity {
 
         btnGenerarExcel = findViewById(R.id.btnGenerarExcel);
         btnVolver = findViewById(R.id.btnVolver);
-
         listaProductosReportes = new ArrayList<>();
 
         btnVolver.setOnClickListener(v -> finish());
@@ -68,7 +67,6 @@ public class reportesProductos extends AppCompatActivity {
             }
             seleccionarUbicacionExcel();
         });
-
         cargarResumenInventario();
     }
 
@@ -120,9 +118,7 @@ public class reportesProductos extends AppCompatActivity {
         crearArchivoLauncher.launch(intent);
     }
 
-    // ============================================================
-    // Generar Excel
-    // ============================================================
+    // Metodo para Generar Excel
 
     private void generarExcel(Uri uri) {
 

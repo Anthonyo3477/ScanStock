@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectoprueba.R;
 import com.example.proyectoprueba.manager.alertasManager;
+import com.example.proyectoprueba.manager.movimientoManager;
 import com.example.proyectoprueba.model.Producto;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.auth.FirebaseAuth;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
-import com.example.proyectoprueba.manager.movimientoManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,12 +38,13 @@ public class reponerProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.reponer_producto);
+
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         manager = new alertasManager();
         movimientoManager = new movimientoManager();
+
         etCodigoBarras = findViewById(R.id.etCodigoBarras);
         etCantidadRepuesta = findViewById(R.id.etCantidadRepuesta);
 
@@ -54,18 +55,15 @@ public class reponerProducto extends AppCompatActivity {
         btnConfirmar = findViewById(R.id.btnConfirmar);
         btnVolver = findViewById(R.id.btnVolver);
         btnEscanear = findViewById(R.id.btnEscanear);
+
         btnConfirmar.setOnClickListener(v -> validarDatos());
         btnVolver.setOnClickListener(v -> finish());
         btnEscanear.setOnClickListener(v -> iniciarEscaneo());
     }
 
-    // ==========================================
-    // ESCANEAR CÓDIGO DE BARRAS
-    // ==========================================
-
     private void iniciarEscaneo() {
-        ScanOptions opciones = new ScanOptions();
 
+        ScanOptions opciones = new ScanOptions();
         opciones.setPrompt("Escanee el código del producto");
         opciones.setBeepEnabled(true);
         opciones.setOrientationLocked(false);
@@ -74,17 +72,14 @@ public class reponerProducto extends AppCompatActivity {
     }
 
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(), result -> {
+
         if (result.getContents() != null) {
-            String codigoEscaneado = result.getContents();
-            etCodigoBarras.setText(codigoEscaneado);
+            etCodigoBarras.setText(result.getContents());
         }
     });
 
-    // ==========================================
-    // VALIDAR DATOS
-    // ==========================================
-
     private void validarDatos() {
+
         String codigo = etCodigoBarras.getText().toString().trim();
         String cantidadTexto = etCantidadRepuesta.getText().toString().trim();
 
@@ -102,11 +97,11 @@ public class reponerProducto extends AppCompatActivity {
             Toast.makeText(this, "Seleccione Bodega o Góndola", Toast.LENGTH_SHORT).show();
             return;
         }
+
         int cantidad;
 
         try {
             cantidad = Integer.parseInt(cantidadTexto);
-
         } catch (NumberFormatException e) {
             etCantidadRepuesta.setError("Ingrese un número válido");
             return;
@@ -124,14 +119,12 @@ public class reponerProducto extends AppCompatActivity {
         } else {
             destino = "Gondola";
         }
+
         reponerProducto(codigo, cantidad, destino);
     }
 
-    // ==========================================
-    // REPONER PRODUCTO
-    // ==========================================
-
     private void reponerProducto(String codigo, int cantidad, String destino) {
+
         long codigoBarras;
 
         try {
@@ -140,23 +133,32 @@ public class reponerProducto extends AppCompatActivity {
             Toast.makeText(this, "Código de barras inválido", Toast.LENGTH_SHORT).show();
             return;
         }
+
         db.collection("producto").whereEqualTo("codigoBarras", codigoBarras).get().addOnSuccessListener(queryDocumentSnapshots -> {
+
             if (queryDocumentSnapshots.isEmpty()) {
                 Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             DocumentSnapshot doc = queryDocumentSnapshots.getDocuments().get(0);
-
             Producto producto = doc.toObject(Producto.class);
-            if (producto == null) {Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
+
+            if (producto == null) {
+                Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             producto.setId(doc.getId());
+            Long codigoFirebase = doc.getLong("codigoBarras");
+
+            if (codigoFirebase != null) {
+                producto.setCodigoBarras(codigoFirebase);
+            }
 
             int stockBodegaActual = producto.getStockBodega();
             int stockGondolaActual = producto.getStockGondola();
+
             int nuevoStockBodega = stockBodegaActual;
             int nuevoStockGondola = stockGondolaActual;
 
@@ -171,11 +173,11 @@ public class reponerProducto extends AppCompatActivity {
                 if (stockBodegaActual < cantidad) {
                     Toast.makeText(this, "No hay suficiente stock en bodega", Toast.LENGTH_LONG).show();
                     return;
-
                 }
 
                 nuevoStockBodega = stockBodegaActual - cantidad;
                 nuevoStockGondola = stockGondolaActual + cantidad;
+
                 actualizacion.put("stockBodega", nuevoStockBodega);
                 actualizacion.put("stockGondola", nuevoStockGondola);
             }
@@ -188,37 +190,36 @@ public class reponerProducto extends AppCompatActivity {
                 producto.setStockBodega(stockBodegaFinal);
                 producto.setStockGondola(stockGondolaFinal);
                 manager.verificarProducto(producto);
+                String usuario = "Usuario desconocido";
 
-                String usuario = "Usuario Desconocido";
-
-                if (auth.getCurrentUser() != null){
+                if (auth.getCurrentUser() != null && auth.getCurrentUser().getEmail() != null) {
                     usuario = auth.getCurrentUser().getEmail();
-
-                    int stockAntes;
-                    int stockDespues;
-                    String accion;
-
-                    if( destino.equals("Bodega")){
-
-                        stockAntes = stockBodegaActual;
-                        stockDespues = stockBodegaFinal;
-                        accion = "Reposición en Bodega";
-
-                    }else{
-                        stockAntes = stockGondolaActual;
-                        stockDespues = stockGondolaFinal;
-                        accion = "Reposición en Góndola";
-                    }
-
-                    movimientoManager.registrarMovimiento(producto.getId(), producto.getNombre(), usuario, accion, destino, cantidad, stockAntes, stockDespues);
                 }
+
+                int stockAntes;
+                int stockDespues;
+                String accion;
+
+                if (destino.equals("Bodega")) {
+                    stockAntes = stockBodegaActual;
+                    stockDespues = stockBodegaFinal;
+                    accion = "Reposición en Bodega";
+
+                } else {
+                    stockAntes = stockGondolaActual;
+                    stockDespues = stockGondolaFinal;
+                    accion = "Reposición en Góndola";
+                }
+
+                movimientoManager.registrarMovimiento(producto.getId(),producto.getNombre(),usuario,accion,destino,cantidad,stockAntes,stockDespues);
                 Toast.makeText(this, "Producto repuesto correctamente", Toast.LENGTH_SHORT).show();
-
                 finish();
-            }).addOnFailureListener(e -> {Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            });
 
-        }).addOnFailureListener(e -> {Toast.makeText(this, "Error al buscar el producto", Toast.LENGTH_LONG).show();
+            }).addOnFailureListener(e -> {
+                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            });
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Error al buscar el producto: " + e.getMessage(), Toast.LENGTH_LONG).show();
         });
     }
 }

@@ -22,9 +22,7 @@ public class Movimientos extends AppCompatActivity {
 
     private RecyclerView recyclerMovimientos;
     private Button btnVolver;
-
     private FirebaseFirestore db;
-
     private final List<Movimiento> listaMovimientos = new ArrayList<>();
     private movimientoAdapter adapter;
 
