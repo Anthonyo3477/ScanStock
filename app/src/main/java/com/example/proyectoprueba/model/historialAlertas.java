@@ -3,19 +3,18 @@ package com.example.proyectoprueba.model;
 public class historialAlertas {
 
     private String idProducto;
-
     private String nombre;
     private String categoria;
-    private long codigoBarras;
-    private int cantidadFaltante;
-    private int stockBodega;
-    private int stockGondola;
+    private Long codigoBarras;
+    private Integer cantidadFaltante;
+    private Integer stockBodega;
+    private Integer stockGondola;
     private String estado;
 
     public historialAlertas() {
     }
 
-    public historialAlertas(String idProducto, String nombre, String categoria, long codigoBarras, int cantidadFaltante, int stockBodega, int stockGondola, String estado) {
+    public historialAlertas(String idProducto, String nombre, String categoria, Long codigoBarras, Integer cantidadFaltante, Integer stockBodega, Integer stockGondola, String estado) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -50,35 +49,35 @@ public class historialAlertas {
         this.categoria = categoria;
     }
 
-    public long getCodigoBarras() {
+    public Long getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(long codigoBarras) {
+    public void setCodigoBarras(Long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 
-    public int getCantidadFaltante() {
+    public Integer getCantidadFaltante() {
         return cantidadFaltante;
     }
 
-    public void setCantidadFaltante(int cantidadFaltante) {
+    public void setCantidadFaltante(Integer cantidadFaltante) {
         this.cantidadFaltante = cantidadFaltante;
     }
 
-    public int getStockBodega() {
+    public Integer getStockBodega() {
         return stockBodega;
     }
 
-    public void setStockBodega(int stockBodega) {
+    public void setStockBodega(Integer stockBodega) {
         this.stockBodega = stockBodega;
     }
 
-    public int getStockGondola() {
+    public Integer getStockGondola() {
         return stockGondola;
     }
 
-    public void setStockGondola(int stockGondola) {
+    public void setStockGondola(Integer stockGondola) {
         this.stockGondola = stockGondola;
     }
 

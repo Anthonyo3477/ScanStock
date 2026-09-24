@@ -1,4 +1,5 @@
 package com.example.proyectoprueba.model;
+import com.google.firebase.Timestamp;
 
 public class Movimiento {
 
@@ -12,12 +13,12 @@ public class Movimiento {
     private int cantidad;
     private int stockAntes;
     private int stockDespues;
-    private long fecha;
+    private Timestamp fecha;
 
     public Movimiento() {
     }
 
-    public Movimiento(String id, String idProducto, String nombreProducto, String usuario, String accion, Long codigoBarras, String destino, int cantidad, int stockAntes, int stockDespues, long fecha) {
+    public Movimiento(String id, String idProducto, String nombreProducto, String usuario, String accion, Long codigoBarras, String destino, int cantidad, int stockAntes, int stockDespues, Timestamp fecha) {
         this.id = id;
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
@@ -111,11 +112,11 @@ public class Movimiento {
         this.stockDespues = stockDespues;
     }
 
-    public long getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(long fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

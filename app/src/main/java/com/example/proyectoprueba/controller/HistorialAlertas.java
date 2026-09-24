@@ -58,16 +58,17 @@ public class HistorialAlertas extends AppCompatActivity {
                 alerta.setCategoria(doc.getString("categoria"));
 
                 Long codigo = doc.getLong("codigoBarras");
-                alerta.setCodigoBarras(codigo != null ? codigo.intValue() : 0);
+                alerta.setCodigoBarras(codigo);
 
                 Long cantidad = doc.getLong("cantidadFaltante");
-                alerta.setCantidadFaltante(cantidad != null ? cantidad.intValue() : 0);
+                alerta.setCantidadFaltante(cantidad != null ? cantidad.intValue() : null);
 
                 Long stockBodega = doc.getLong("stockBodega");
-                alerta.setStockBodega(stockBodega != null ? stockBodega.intValue() : 0);
+                alerta.setStockBodega(stockBodega != null ? stockBodega.intValue() : null);
 
                 Long stockGondola = doc.getLong("stockGondola");
-                alerta.setStockGondola(stockGondola != null ? stockGondola.intValue() : 0);
+                alerta.setStockGondola(stockGondola != null ? stockGondola.intValue() : null);
+
                 alerta.setEstado(doc.getString("estado"));
 
                 listaHistorial.add(alerta);

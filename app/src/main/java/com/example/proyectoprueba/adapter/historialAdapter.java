@@ -23,10 +23,7 @@ public class historialAdapter extends RecyclerView.Adapter<historialAdapter.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType) {
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_historial, parent, false);
 
@@ -34,33 +31,49 @@ public class historialAdapter extends RecyclerView.Adapter<historialAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull ViewHolder holder,
-            int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         historialAlertas alerta = listaHistorial.get(position);
 
-        String detalle =
-                "Producto: " + alerta.getNombre()
-                        + "\nCódigo de Barras: " + alerta.getCodigoBarras()
-                        + "\nCategoría: " + alerta.getCategoria()
-                        + "\nCantidad Faltante: " + alerta.getCantidadFaltante()
-                        + "\nStock Bodega: " + alerta.getStockBodega()
-                        + "\nStock Góndola: " + alerta.getStockGondola()
-                        + "\nEstado: " + alerta.getEstado();
+        // Nombre y Categoría (Strings)
+        holder.txtNombreProducto.setText(alerta.getNombre() != null ? alerta.getNombre() : "Sin nombre");
+        holder.txtCategoria.setText(alerta.getCategoria() != null ? alerta.getCategoria() : "Sin categoría");
 
-        holder.txtNombreProducto.setText(alerta.getNombre());
-        holder.txtEstado.setText("RESUELTA");
-        holder.txtCodigo.setText("Código: " + alerta.getCodigoBarras());
-        holder.txtCategoria.setText("Categoría: " + alerta.getCategoria());
-        holder.txtCantidad.setText("Cantidad Faltante: " + alerta.getCantidadFaltante());
-        holder.txtBodega.setText("Stock Bodega: " + alerta.getStockBodega());
-        holder.txtGondola.setText("Stock Góndola: " + alerta.getStockGondola());
+        // Código de Barras (Long)
+        if (alerta.getCodigoBarras() != null) {
+            holder.txtCodigo.setText("Código: " + alerta.getCodigoBarras());
+            holder.txtCodigo.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtCodigo.setVisibility(View.GONE);
+        }
+
+        // Cantidad Faltante (Integer)
+        if (alerta.getCantidadFaltante() != null && alerta.getCantidadFaltante() > 0) {
+            holder.txtCantidad.setText("Cantidad Faltante: " + alerta.getCantidadFaltante());
+            holder.txtCantidad.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtCantidad.setVisibility(View.GONE);
+        }
+
+        // Stock Bodega (Integer)
+        if (alerta.getStockBodega() != null && alerta.getStockBodega() > 0) {
+            holder.txtBodega.setText("Stock Bodega: " + alerta.getStockBodega());
+            holder.txtBodega.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtBodega.setVisibility(View.GONE);
+        }
+
+        // Stock Góndola (Integer)
+        if (alerta.getStockGondola() != null && alerta.getStockGondola() > 0) {
+            holder.txtGondola.setText("Stock Góndola: " + alerta.getStockGondola());
+            holder.txtGondola.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtGondola.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return listaHistorial.size();
+        return listaHistorial != null ? listaHistorial.size() : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

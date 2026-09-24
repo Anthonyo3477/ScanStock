@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectoprueba.R;
 import com.example.proyectoprueba.model.Movimiento;
+import com.google.firebase.Timestamp; // Se agrega la importación de Firebase Timestamp
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,13 +40,12 @@ public class movimientoAdapter extends RecyclerView.Adapter<movimientoAdapter.Mo
         Movimiento movimiento = listaMovimientos.get(position);
         holder.txtProducto.setText("Producto: " + movimiento.getNombreProducto());
         holder.txtUsuario.setText("Usuario: " + movimiento.getUsuario());
-        holder.txtCodigoBarras.setText("Codigo de Barras:" + movimiento.getCodigoBarras());
+        holder.txtCodigoBarras.setText("Codigo de Barras: " + movimiento.getCodigoBarras());
         holder.txtAccion.setText("Acción: " + movimiento.getAccion());
         holder.txtDestino.setText("Destino: " + movimiento.getDestino());
         holder.txtCantidad.setText("Cantidad: " + movimiento.getCantidad());
         holder.txtStock.setText("Stock: " + movimiento.getStockAntes() + " → " + movimiento.getStockDespues());
-        String fechaFormateada = convertirFecha(movimiento.getFecha());
-        holder.txtFecha.setText("Fecha: " + fechaFormateada);
+        holder.txtFecha.setText("Fecha: " + convertirFecha(movimiento.getFecha()));
     }
 
     @Override
@@ -53,8 +53,11 @@ public class movimientoAdapter extends RecyclerView.Adapter<movimientoAdapter.Mo
         return listaMovimientos.size();
     }
 
-    private String convertirFecha(long fecha) {
-        Date date = new Date(fecha);
+    private String convertirFecha(Timestamp timestamp) {
+        if (timestamp == null) {
+            return "";
+        }
+        Date date = timestamp.toDate();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         return formato.format(date);
     }

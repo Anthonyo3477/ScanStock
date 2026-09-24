@@ -1,6 +1,7 @@
 package com.example.proyectoprueba.manager;
 
 import com.example.proyectoprueba.model.Movimiento;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class movimientoManager {
@@ -14,11 +15,12 @@ public class movimientoManager {
     public void registrarMovimiento(String idProducto, String nombreProducto, String usuario, String accion, Long codigoBarras, String destino, int cantidad, int stockAntes, int stockDespues) {
 
         String idMovimiento = db.collection("movimientos").document().getId();
-        Movimiento movimiento = new Movimiento(idMovimiento, idProducto, nombreProducto, usuario, accion, codigoBarras, destino, cantidad, stockAntes, stockDespues, System.currentTimeMillis());
+        Movimiento movimiento = new Movimiento(idMovimiento, idProducto, nombreProducto, usuario, accion, codigoBarras, destino, cantidad, stockAntes, stockDespues, Timestamp.now());
 
         db.collection("movimientos").document(idMovimiento).set(movimiento).addOnSuccessListener(unused -> {
             System.out.println("Movimiento registrado correctamente");
-        }).addOnFailureListener(e -> {System.out.println("Error al registrar movimiento: " + e.getMessage());
+        }).addOnFailureListener(e -> {
+            System.out.println("Error al registrar movimiento: " + e.getMessage());
         });
     }
 }
