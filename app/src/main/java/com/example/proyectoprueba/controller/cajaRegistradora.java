@@ -191,7 +191,7 @@ public class cajaRegistradora extends AppCompatActivity {
             }
 
             movimientoManager.registrarMovimiento(productoActual.getId(), productoActual.getNombre(), usuario,
-                    "Venta", "Gondola", cantidadVenta, stockAnterior, stockFinal);
+                    "Venta", productoActual.getCodigoBarras(), "Gondola",cantidadVenta, stockAnterior, stockFinal);
 
             progressManager.ocultar();
             Toast.makeText(this,"Venta realizada correctamente",Toast.LENGTH_SHORT).show();

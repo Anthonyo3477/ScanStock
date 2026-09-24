@@ -39,6 +39,7 @@ public class movimientoAdapter extends RecyclerView.Adapter<movimientoAdapter.Mo
         Movimiento movimiento = listaMovimientos.get(position);
         holder.txtProducto.setText("Producto: " + movimiento.getNombreProducto());
         holder.txtUsuario.setText("Usuario: " + movimiento.getUsuario());
+        holder.txtCodigoBarras.setText("Codigo de Barras:" + movimiento.getCodigoBarras());
         holder.txtAccion.setText("Acción: " + movimiento.getAccion());
         holder.txtDestino.setText("Destino: " + movimiento.getDestino());
         holder.txtCantidad.setText("Cantidad: " + movimiento.getCantidad());
@@ -59,13 +60,14 @@ public class movimientoAdapter extends RecyclerView.Adapter<movimientoAdapter.Mo
     }
 
     public static class MovimientoViewHolder extends RecyclerView.ViewHolder {
-        TextView txtProducto, txtUsuario, txtAccion, txtDestino, txtCantidad, txtStock, txtFecha;
+        TextView txtProducto, txtUsuario, txtAccion, txtCodigoBarras, txtDestino, txtCantidad, txtStock, txtFecha;
 
         public MovimientoViewHolder(@NonNull View itemView) {
             super(itemView);
             txtProducto = itemView.findViewById(R.id.txtProducto);
             txtUsuario = itemView.findViewById(R.id.txtUsuario);
             txtAccion = itemView.findViewById(R.id.txtAccion);
+            txtCodigoBarras = itemView.findViewById(R.id.txtCodigoBarras);
             txtDestino = itemView.findViewById(R.id.txtDestino);
             txtCantidad = itemView.findViewById(R.id.txtCantidad);
             txtStock = itemView.findViewById(R.id.txtStock);

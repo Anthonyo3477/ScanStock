@@ -11,10 +11,10 @@ public class movimientoManager {
         db = FirebaseFirestore.getInstance();
     }
 
-    public void registrarMovimiento(String idProducto, String nombreProducto, String usuario, String accion, String destino, int cantidad, int stockAntes, int stockDespues) {
+    public void registrarMovimiento(String idProducto, String nombreProducto, String usuario, String accion, Long codigoBarras, String destino, int cantidad, int stockAntes, int stockDespues) {
 
         String idMovimiento = db.collection("movimientos").document().getId();
-        Movimiento movimiento = new Movimiento(idMovimiento, idProducto, nombreProducto, usuario, accion, destino, cantidad, stockAntes, stockDespues, System.currentTimeMillis());
+        Movimiento movimiento = new Movimiento(idMovimiento, idProducto, nombreProducto, usuario, accion, codigoBarras, destino, cantidad, stockAntes, stockDespues, System.currentTimeMillis());
 
         db.collection("movimientos").document(idMovimiento).set(movimiento).addOnSuccessListener(unused -> {
             System.out.println("Movimiento registrado correctamente");

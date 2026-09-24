@@ -7,6 +7,7 @@ public class Movimiento {
     private String nombreProducto;
     private String usuario;
     private String accion;
+    private long codigoBarras;
     private String destino;
     private int cantidad;
     private int stockAntes;
@@ -16,12 +17,13 @@ public class Movimiento {
     public Movimiento() {
     }
 
-    public Movimiento(String id, String idProducto, String nombreProducto, String usuario, String accion, String destino, int cantidad, int stockAntes, int stockDespues, long fecha) {
+    public Movimiento(String id, String idProducto, String nombreProducto, String usuario, String accion, Long codigoBarras, String destino, int cantidad, int stockAntes, int stockDespues, long fecha) {
         this.id = id;
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.usuario = usuario;
         this.accion = accion;
+        this.codigoBarras = codigoBarras;
         this.destino = destino;
         this.cantidad = cantidad;
         this.stockAntes = stockAntes;
@@ -67,6 +69,14 @@ public class Movimiento {
 
     public void setAccion(String accion) {
         this.accion = accion;
+    }
+
+    public long getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(long codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
     public String getDestino() {
@@ -117,6 +127,7 @@ public class Movimiento {
                 ", nombreProducto='" + nombreProducto + '\'' +
                 ", usuario='" + usuario + '\'' +
                 ", accion='" + accion + '\'' +
+                ", codigoBarras=" + codigoBarras +
                 ", destino='" + destino + '\'' +
                 ", cantidad=" + cantidad +
                 ", stockAntes=" + stockAntes +
