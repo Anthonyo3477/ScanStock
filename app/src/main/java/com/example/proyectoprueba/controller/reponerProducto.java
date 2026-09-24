@@ -211,7 +211,7 @@ public class reponerProducto extends AppCompatActivity {
                     accion = "Reposición en Góndola";
                 }
 
-                movimientoManager.registrarMovimiento(producto.getId(),producto.getNombre(),usuario,accion,destino,cantidad,stockAntes,stockDespues);
+                movimientoManager.registrarMovimiento(producto.getId(),producto.getNombre(),usuario,accion, producto.getCodigoBarras(), destino ,cantidad,stockAntes,stockDespues);
                 Toast.makeText(this, "Producto repuesto correctamente", Toast.LENGTH_SHORT).show();
                 finish();
 
